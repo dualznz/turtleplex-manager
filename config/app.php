@@ -173,7 +173,16 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * Custom Service Providers...
+         */
+        Spatie\Permission\PermissionServiceProvider::class,
+        Collective\Html\HtmlServiceProvider:: class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        GrahamCampbell\Markdown\MarkdownServiceProvider::class,
 
     ],
 
@@ -227,6 +236,17 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Custom Classes...
+         */
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
+
+        //'Timezone' => App\Helpers\Timezones::class,
+        //'NumberFormatter' => \App\Helpers\NumberFormatter::class,
+        //'AccentHelper' => \App\Helpers\AccentHelper::class,
     ],
 
 ];
