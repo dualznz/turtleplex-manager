@@ -1,0 +1,28 @@
+ul#side-menu > li.divider {
+    display: block;
+    opacity: 1;
+    padding: 10px 20px 10px 25px;
+    color: white;
+    font-weight: bold;
+    background-color: #1CC09F;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.mini-navbar ul#side-menu > li.divider {
+    display: none;
+    opacity: 0;
+}
+
+.label-right {
+    text-align: right;
+    font-weight: bold;
+}
+
+.text-green {
+    color: #689F38;
+}
+
+.breadcrumb-item-active {
+    font-weight: bold;
+}

@@ -1,5 +1,5 @@
 @section('title')
-    Booster - Home
+    Dashboard
 @endsection
 @extends('layouts.main')
 @section('style')

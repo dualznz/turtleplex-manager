@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title> @yield('title') </title>
+        <title> @yield('title') - TURTLE-Plex Manager </title>
         <!-- Fevicon -->
         <link rel="shortcut icon" href="/static/assets/images/favicon.ico">
         <!-- Start CSS -->
@@ -14,6 +14,9 @@
         <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/static/assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="/static/css/app.css?v={{ hash_file('crc32b', public_path().'/static/assets/css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-IIED/eyOkM6ihtOiQsX2zizxFBphgnv1zbe1bKA+njdFzkr6cDNy16jfIKWu4FNH" crossorigin="anonymous">
+        <livewire:styles>
         <!-- End CSS -->
     </head>
     <body class="xp-vertical">
@@ -39,6 +42,7 @@
         @yield('script')
         <!-- Main JS -->
         <script src="/static/assets/js/main.js"></script>
+        <livewire:scripts>
         <!-- End JS -->
     </body>
 </html>
