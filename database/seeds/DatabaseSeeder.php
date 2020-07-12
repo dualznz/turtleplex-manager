@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        /*
+         * Seed the database with pre defined data attributes
+         */
+        $this->call(CreateInviteSeeder::class);
+
+        $this->call(PermissionsSeeder::class);
+        $this->call(RolesSeeder::class);
     }
 }

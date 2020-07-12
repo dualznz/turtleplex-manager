@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
+use Rackbeat\UIAvatars\HasAvatar;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use SoftDeletes, Notifiable, HasRoles, HasAvatar;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password', 'timezone', 'time_format'
     ];
 
     /**
@@ -29,11 +32,36 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be mutated to dates.
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+    protected $dates = [
+        'created_at', 'updated_at', 'deleted_at'
     ];
+
+    /*
+     * UI Avatar
+     */
+    public function getAvatarNameKey( ) {
+        return 'username';
+    }
+
+    public function avatar() {
+        $length = 2;
+        $avatar = $this->getAvatarGenerator();
+
+        $u = $this->roles()->pluck('name')[0];
+        $c = '';
+        switch ($u) {
+            case 'Staff':
+                $c = '#FFBD00';
+                break;
+            case 'Developer':
+                $c = 'CC99FF';
+                break;
+        }
+
+        return $avatar->name($this->getInitials($length))->backgroundColor($c)->base64();
+    }
 }

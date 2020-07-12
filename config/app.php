@@ -244,9 +244,9 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
 
-        //'Timezone' => App\Helpers\Timezones::class,
-        //'NumberFormatter' => \App\Helpers\NumberFormatter::class,
-        //'AccentHelper' => \App\Helpers\AccentHelper::class,
+        'Timezone' => App\Helpers\Timezones::class,
+        'NumberFormatter' => \App\Helpers\NumberFormatter::class,
+        'AccentHelper' => \App\Helpers\AccentHelper::class,
     ],
 
 ];
