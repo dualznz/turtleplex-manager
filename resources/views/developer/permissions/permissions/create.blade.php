@@ -17,8 +17,8 @@
     <!-- Start XP Contentbar -->
     <div class="xp-contentbar">
         <!-- Start Include Alerts -->
-    @include('layouts.alerts')
-    <!-- End Inclue Alerts -->
+        @include('layouts.alerts')
+        <!-- End Inclue Alerts -->
         <!-- Start Row -->
         <div class="row">
             <!-- Start XP Col -->
