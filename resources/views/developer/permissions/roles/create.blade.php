@@ -19,8 +19,9 @@
         <!-- Start Include Alerts -->
         @include('layouts.alerts')
         <!-- End Inclue Alerts -->
-
+        <!-- Start Row -->
         <div class="row">
+            <!-- Start XP Col -->
             <div class="col-lg-12">
                 <!-- Start Card -->
                 <div class="card m-b-30">
@@ -91,8 +92,9 @@
                 </div>
                 <!-- End Card -->
             </div>
+            <!-- End XP Col -->
         </div>
-        <!-- End XP Col -->
+        <!-- End Row -->
     </div>
     <!-- End XP Contentbar -->
 @endsection
