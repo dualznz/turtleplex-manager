@@ -2,10 +2,6 @@
     Permissions
 @endsection
 @extends('layouts.main')
-@section('style')
-    <!-- Chartist Chart CSS -->
-    <link href="/static/assets/plugins/chartist-js/chartist.min.css" rel="stylesheet" type="text/css" />
-@endsection
 @section('rightbar-content')
     <!-- Start XP Breadcrumbbar -->
     <div class="xp-breadcrumbbar text-center">
@@ -19,7 +15,10 @@
     <!-- End XP Breadcrumbbar -->
     <!-- Start XP Contentbar -->
     <div class="xp-contentbar">
-        <!-- End XP Row -->
+        <!-- Start Include Alerts -->
+        @include('layouts.alerts')
+        <!-- End Inclue Alerts -->
+
         <div class="row">
             <div class="col-lg-12">
                 <!-- Start Card -->
