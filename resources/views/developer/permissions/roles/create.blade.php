@@ -27,7 +27,7 @@
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
                         <h5 class="card-title text-black">New Role</h5>
-                        <h6 class="card-subtitle"></h6>
+                        <h6 class="card-subtitle">Create user groups in which you can assign members to in their profiles and the permissions below will be automatically assigned to them.</h6>
                     </div>
                     <div class="card-body">
 
@@ -36,7 +36,7 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <label class="col-sm-2 control-label label-right my-auto">Name</label>
+                                    <label class="col-sm-2 control-label label-right my-auto">Role Name</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" required="" placeholder="" />
                                         <div class="help-block margin-bottom-none">

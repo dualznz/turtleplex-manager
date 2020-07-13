@@ -9,7 +9,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item">Developer</li>
-            <li class="breadcrumb-item active" aria-current="page">Permissions</li>
+            <li class="breadcrumb-item active">Permissions</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->
@@ -26,7 +26,7 @@
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
                         <h5 class="card-title text-black">Permissions</h5>
-                        <h6 class="card-subtitle"></h6>
+                        <h6 class="card-subtitle">Permission management system which includes the ability to create roles / groups and permissions.</h6>
                     </div>
                     <div class="card-body">
                         <div class="float-right">

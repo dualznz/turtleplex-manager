@@ -8,13 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
         <title> @yield('title') - TURTLE-Plex Manager </title>
         <!-- Fevicon -->
-        <link rel="shortcut icon" href="/static/assets/images/favicon.ico">
+        <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
         <!-- Start CSS -->
         @yield('style')
         <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/static/assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css">
-        <link href="/static/css/app.css?v={{ hash_file('crc32b', public_path().'/static/assets/css/app.css') }}" rel="stylesheet">
+        <link href="/static/assets/css/app.css?v={{ hash_file('crc32b', public_path().'/static/assets/css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-IIED/eyOkM6ihtOiQsX2zizxFBphgnv1zbe1bKA+njdFzkr6cDNy16jfIKWu4FNH" crossorigin="anonymous">
         <livewire:styles>
         <!-- End CSS -->
