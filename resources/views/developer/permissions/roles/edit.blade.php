@@ -1,24 +1,24 @@
 @section('title')
-    New Role
+    Edit Role
 @endsection
 @extends('layouts.main')
 @section('rightbar-content')
     <!-- Start XP Breadcrumbbar -->
     <div class="xp-breadcrumbbar text-center">
-        <h4 class="page-title">Permissions</h4>
+        <h4 class="page-title">Edit Role: {{ $r->name }}</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item">Developer</li>
             <li class="breadcrumb-item"><a href="{{ route('developer-permissions') }}"><i class="far fa-key"></i> Permissions</a></li>
-            <li class="breadcrumb-item active"><i class="far fa-plus"></i> New Role</li>
+            <li class="breadcrumb-item active"><i class="far fa-pencil"></i> <strong>Edit Role: {{ $r->name }}</strong></li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->
     <!-- Start XP Contentbar -->
     <div class="xp-contentbar">
         <!-- Start Include Alerts -->
-        @include('layouts.alerts')
-        <!-- End Inclue Alerts -->
+    @include('layouts.alerts')
+    <!-- End Inclue Alerts -->
         <!-- Start Row -->
         <div class="row">
             <!-- Start XP Col -->
@@ -26,19 +26,19 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">New Role</h5>
+                        <h5 class="card-title text-black">Edit Role: {{ $r->name }}</h5>
                         <h6 class="card-subtitle"></h6>
                     </div>
                     <div class="card-body">
 
-                        <form class="form-horizontal" method="POST" action="{{ route('developer-permissions-roles-store') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('developer-permissions-roles-update', $r->id) }}">
                             @csrf
 
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-sm-2 control-label label-right my-auto">Name</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" required="" placeholder="" />
+                                        <input type="text" class="form-control" name="name" id="name" value="{{ $r->name }}" required="" placeholder="" />
                                         <div class="help-block margin-bottom-none">
                                             {{ $errors->first('name') }}
                                         </div>
@@ -65,8 +65,8 @@
                                                 @foreach ($c->permissions() as $p)
                                                     <tr>
                                                         <td class="text-left"><b>{{ $p->name }}</b> <span class="float-right">{{ $p->description }}</span></td>
-                                                        <td style="background-color: #de6464"><input type="radio" title="{{ $p->name }}" name="{{ $p->name }}" {{ old($p->name) == 0 ? 'checked=checked' : '' }} value="0"></td>
-                                                        <td style="background-color: #daffda"><input type="radio" title="{{ $p->name }}" name="{{ $p->name }}" {{ old($p->name) == 1 ? 'checked=checked' : '' }} value="1"></td>
+                                                        <td style="background-color: #de6464"><input type="radio" title="{{ $p->name }}" name="{{ $p->name }}" {{ $r->hasPermissionTo($p->name) ? '' : 'checked=checked' }} value="0"></td>
+                                                        <td style="background-color: #daffda"><input type="radio" title="{{ $p->name }}" name="{{ $p->name }}" {{ $r->hasPermissionTo($p->name) ? 'checked=checked' : '' }} value="1"></td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
@@ -81,8 +81,15 @@
                                 <div class="row">
                                     <div class="col-md-1 control-label">&nbsp;</div>
                                     <div class="col-sm-10">
+                                        <div class="float-right">
+                                            @if (\App\User::role($r->name)->count() > 0)
+                                                <button type="button" class="btn btn-danger disabled" data-toggle="tooltip" data-placement="top" title="There are users assigned to this role"><i class="far fa-trash"></i> Delete</button>
+                                            @else
+                                                <a class="btn btn-danger" href="{{ route('developer-permissions-roles-destroy', $r->id) }}"><i class="far fa-trash"></i> Delete</a>
+                                            @endif
+                                        </div>
                                         <a class="btn btn-warning" href="{{ route('developer-permissions') }}">Cancel</a> &nbsp;
-                                        <button class="btn btn-primary" type="submit">Create Role</button>
+                                        <button class="btn btn-primary" type="submit">Edit Role</button>
                                     </div>
                                 </div>
                             </div>

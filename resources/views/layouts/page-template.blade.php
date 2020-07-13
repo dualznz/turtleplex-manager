@@ -34,7 +34,7 @@
                 </div>
                 <!-- End Card -->
             </div>
-            <!-- End XP Col -->
+            <!-- End Row Col -->
         </div>
         <!-- End Row -->
     </div>
