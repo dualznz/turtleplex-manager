@@ -34,7 +34,16 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard
     Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
-
+    // Servers
+    Route::prefix('/servers')->group(function () {
+        Route::get('/', ['as' => 'servers', 'uses' => 'ServersController@index']);
+        Route::get('/add', ['as' => 'servers-add', 'uses' => 'ServersController@create']);
+        Route::post('/store', ['as' => 'servers-store', 'uses' => 'ServersController@store']);
+        Route::get('/edit/{slug}', ['as' => 'servers-edit', 'uses' => 'ServersController@edit']);
+        Route::post('/update/{slug}', ['as' => 'servers-edit-store', 'uses' => 'ServersController@update']);
+        Route::get('/remove/{slug}', ['as' => 'servers-remove', 'uses' => 'ServersController@remove']);
+        Route::post('/remove/{slug}', ['as' => 'servers-remove-store', 'uses' => 'ServersController@removeStore']);
+    });
 
 
     // Developer

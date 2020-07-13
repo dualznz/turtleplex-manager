@@ -15,7 +15,20 @@
                     <a href="{{ route('dashboard') }}"><i class="far fa-tachometer-alt"></i> <span>Dashboard</span></a>
                 </li>
 
-                @can('viewDeveloper')
+                @can ('viewHardware')
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="fal fa-garage"></i> <span>Hardware</span><i class="mdi mdi-chevron-right pull-right"></i>
+                        </a>
+                        <ul class="xp-vertical-submenu">
+                            @can ('viewServers')
+                                <li {{ (request()->is('*servers') ? 'class=active' : '') }}><a href="{{ route('servers') }}"><i class="fal fa-server"></i> <span>Servers</span></a></li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+
+                @can ('viewDeveloper')
                     <li>
                         <a href="javaScript:void(0);">
                             <i class="far fa-terminal"></i> <span>Developer</span><i class="mdi mdi-chevron-right pull-right"></i>

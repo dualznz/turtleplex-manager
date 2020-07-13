@@ -8,7 +8,7 @@
         <h4 class="page-title">PAGETITLE</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">INDEX</a></li>
-            <li class="breadcrumb-item active" aria-current="page">PAGE</li>
+            <li class="breadcrumb-item active">PAGE</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->

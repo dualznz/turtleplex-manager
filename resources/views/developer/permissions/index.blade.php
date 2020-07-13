@@ -9,7 +9,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item">Developer</li>
-            <li class="breadcrumb-item active">Permissions</li>
+            <li class="breadcrumb-item active"><i class="far fa-key"></i> Permissions</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->
