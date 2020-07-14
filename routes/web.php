@@ -45,6 +45,25 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
         Route::post('/remove/{slug}', ['as' => 'servers-remove-store', 'uses' => 'ServersController@removeStore']);
     });
 
+    // Drives
+    Route::prefix('/drives')->group(function () {
+        Route::get('/', ['as' => 'drives', 'uses' => 'DrivesController@index']);
+        Route::get('/add', ['as' => 'drives-add', 'uses' => 'DrivesController@create']);
+        Route::post('/store', ['as' => 'drives-store', 'uses' => 'DrivesController@store']);
+        Route::get('/edit/{slug}', ['as' => 'drives-edit', 'uses' => 'DrivesController@edit']);
+        Route::post('/update/{slug}', ['as' => 'drives-edit-store', 'uses' => 'DrivesController@update']);
+        Route::get('/remove/{slug}', ['as' => 'drives-remove', 'uses' => 'DrivesController@remove']);
+        Route::post('/remove/{slug}', ['as' => 'drives-remove-store', 'uses' => 'DrivesController@removeStore']);
+
+        // Drive Assets
+        Route::prefix('/drive-assets')->group(function () {
+            Route::get('/{slug}', ['as' => 'drive-assets', 'uses' => 'DriveAssetsController@index']);
+            Route::post('/store/{slug}', ['as' => 'drive-assets-store', 'uses' => 'DriveAssetsController@store']);
+            Route::post('/update/{id}', ['as' => 'drive-assets-edit-store', 'uses' => 'DriveAssetsController@update']);
+            Route::get('/remove/{slug}/{id}', ['as' => 'drive-assets-remove', 'uses' => 'DriveAssetsController@remove']);
+            Route::post('/remove/{slug}/{id}', ['as' => 'drive-assets-remove-store', 'uses' => 'DriveAssetsController@removeStore']);
+        });
+    });
 
     // Developer
     Route::prefix('/developer')->middleware(['role:Developer'])->group(function () {
