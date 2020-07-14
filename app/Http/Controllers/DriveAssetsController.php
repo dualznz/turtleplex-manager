@@ -39,7 +39,8 @@ class DriveAssetsController extends Controller
         }
 
         $a = DriveAssets::where('drive_id', $d->id)
-            ->where('server_id', $s->id)->get();
+            ->where('server_id', $s->id)
+            ->orderBy('asset_name', 'ASC')->get();
 
         return view('drives.assets.index', [
             'drive'     => $d,
