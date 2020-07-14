@@ -23,40 +23,6 @@
             <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
                 <div class="xp-profilebar text-right">
                     <ul class="list-inline mb-0">
-                        <li class="list-inline-item">
-                            <div class="dropdown xp-message mr-3">
-                                <a class="dropdown-toggle user-profile-img text-white" href="#" role="button" id="xp-message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="mdi mdi-message font-18 v-a-m"></i>
-                                    <span class="badge badge-pill badge-success xp-badge-up">8</span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="xp-message">
-                                    <ul class="list-unstyled">
-                                      <li class="media">
-                                        <div class="media-body">
-                                          <h5 class="mt-0 mb-0 my-3 text-dark text-center font-15">8 New Messages</h5>
-                                        </div>
-                                      </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-inline-item">
-                            <div class="dropdown xp-notification mr-3">
-                                <a class="dropdown-toggle user-profile-img text-white" href="#" role="button" id="xp-notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="mdi mdi-bell-ring font-18 v-a-m"></i>
-                                    <span class="badge badge-pill badge-danger xp-badge-up">3</span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="xp-notification">
-                                    <ul class="list-unstyled">
-                                      <li class="media">
-                                        <div class="media-body">
-                                          <h5 class="mt-0 mb-0 my-3 text-dark text-center font-15">3 New Notification</h5>
-                                        </div>
-                                      </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
                         <li class="list-inline-item mr-0">
                             <div class="dropdown xp-userprofile">
                                 <a class="dropdown-toggle user-profile-img" href="#" role="button" id="xp-userprofile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ auth()->user()->avatar() }}" alt="user-profile" class="rounded-circle img-fluid"><span class="xp-user-live"></span></a>
@@ -79,7 +45,12 @@
     <!-- Start XP Footerbar -->
     <div class="xp-footerbar">
         <footer class="footer">
-            <p class="mb-0">© 2020 Booster - All Rights Reserved.</p>
+            <div class="float-right">
+                Developed &amp; maintained by <a href="javascript:void(0);">dualznz</a>&nbsp;&nbsp;&nbsp;&nbsp;Version <b>1.0.0 RC1</b>
+            </div>
+            <div class="float-left">
+                &copy; {{ date('Y') }} Dualznz. All Rights Reserved.
+            </div>
         </footer>
     </div>
     <!-- End XP Footerbar -->

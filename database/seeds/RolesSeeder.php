@@ -95,6 +95,10 @@ class RolesSeeder extends Seeder
         $developer->givePermissionTo('addStateGroup');
         $developer->givePermissionTo('editStateGroup');
         $developer->givePermissionTo('removeStateGroup');
+        $developer->givePermissionTo('viewStateAssets');
+        $developer->givePermissionTo('addStateAsset');
+        $developer->givePermissionTo('editStateAsset');
+        $developer->givePermissionTo('removeStateAsset');
 
         // developer area
         $developer->givePermissionTo('viewDeveloper');

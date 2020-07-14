@@ -54,7 +54,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fal fa-ethernet"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" name="server_host" value="{{ old('server_host') }}" required="" placeholder="127.0.0.1" />
+                                            <input type="text" class="form-control" name="server_host" value="{{ old('server_host') }}" required="" placeholder="___.___.___.___" />
                                         </div>
                                         <div class="help-block margin-bottom-none">
                                             <small>Please provide the server hostname / ip address.</small>

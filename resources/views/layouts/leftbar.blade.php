@@ -24,9 +24,12 @@
                             @can ('viewServers')
                                 <li {{ (request()->is('*servers') ? 'class=active' : '') }}><a href="{{ route('servers') }}"><i class="fal fa-server"></i> <span>Servers</span></a></li>
                             @endcan
-                                @can('viewDrives')
-                                    <li {{ (request()->is('*drive*') ? 'class=active' : '') }}><a href="{{ route('drives') }}"><i class="fal fa-hdd"></i> <span>Hard Drives</span></a></li>
-                                @endcan
+                            @can('viewDrives')
+                                <li {{ (request()->is('*drive*') ? 'class=active' : '') }}><a href="{{ route('drives') }}"><i class="fal fa-hdd"></i> <span>Hard Drives</span></a></li>
+                            @endcan
+                            @can ('viewStateGroups')
+                                    <li {{ (request()->is('*state*') ? 'class=active' : '') }}><a href="{{ route('state-groups') }}"><i class="fal fa-cabinet-filing"></i> <span>Media State Groups</span></a></li>
+                            @endcan
                         </ul>
                     </li>
                 @endcan

@@ -15,6 +15,7 @@
         <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="/static/assets/css/app.css?v={{ hash_file('crc32b', public_path().'/static/assets/css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-IIED/eyOkM6ihtOiQsX2zizxFBphgnv1zbe1bKA+njdFzkr6cDNy16jfIKWu4FNH" crossorigin="anonymous">
+        <link href="/static/assets/plugins/colorpicker/bootstrap-colorpicker.css" type="text/css">
         <livewire:styles>
         @stack('css')
         <!-- End CSS -->
@@ -41,6 +42,8 @@
         <script src="/static/assets/js/sidebar-menu.js"></script>
         <!-- Main JS -->
         <script src="/static/assets/js/main.js"></script>
+        <script src="/static/assets/plugins/bootstrap-inputmask/jquery.inputmask.bundle.min.js"></script>
+        <script src="/static/assets/js/init/form-inputmask-init.js"></script>
 
         <livewire:scripts>
             <!-- End JS -->

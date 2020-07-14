@@ -65,6 +65,24 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
         });
     });
 
+    // State Groups
+    Route::prefix('/state-groups')->group(function () {
+        Route::get('/', ['as' => 'state-groups', 'uses' => 'StateGroupsController@index']);
+        Route::post('/store', ['as' => 'state-groups-store', 'uses' => 'StateGroupsController@store']);
+        Route::post('/update/{slug}', ['as' => 'state-groups-edit-store', 'uses' => 'StateGroupsController@update']);
+        Route::get('/remove/{slug}', ['as' => 'state-groups-remove', 'uses' => 'StateGroupsController@remove']);
+        Route::post('/remove/{slug}', ['as' => 'state-groups-remove-store', 'uses' => 'StateGroupsController@removeStore']);
+
+        // State Assets
+        Route::prefix('/state-assets/{slug}')->group(function () {
+            Route::get('/', ['as' => 'state-assets', 'uses' => 'StateAssetsController@index']);
+            Route::post('/store', ['as' => 'state-assets-store', 'uses' => 'StateAssetsController@store']);
+            Route::post('/update/{id}', ['as' => 'state-assets-edit-store', 'uses' => 'StateAssetsController@update']);
+            Route::get('/remove/{id}', ['as' => 'state-assets-remove', 'uses' => 'StateAssetsController@remove']);
+            Route::post('/remove/{id}', ['as' => 'state-assets-remove-store', 'uses' => 'StateAssetsController@removeStore']);
+        });
+    });
+
     // Developer
     Route::prefix('/developer')->middleware(['role:Developer'])->group(function () {
         // Invites
