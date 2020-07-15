@@ -175,6 +175,51 @@
                         <div class="modal-body">
                             <div class="col-md-12">
 
+                                <div class="form-group {{ $errors->first('asset_name') ? 'has-error' : ''}}">
+                                    <div class="row">
+                                        <label class="col-lg-3 control-label label-right my-auto">Asset Name</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="asset_name" value="{{ $asset->asset_name }}" required="" placeholder="Asset name..." />
+                                            <div class="help-block margin-bottom-none">
+                                                <small>Please provide the asset state name.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label class="col-lg-3 control-label label-right my-auto">State Group</label>
+                                        <div class="col-lg-9">
+                                            {{ $group->group_name }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group {{ $errors->first('text_color') ? 'has-error' : ''}}">
+                                    <div class="row">
+                                        <label class="col-lg-3 control-label label-right my-auto">Text Color</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="text_color" value="{{ $asset->text_color }}" required="" placeholder="#ABC123" />
+                                            <div class="help-block margin-bottom-none">
+                                                <small>Please provide the asset text color, <a href="https://htmlcolorcodes.com/" id="accentColor" target="_blank">choose html color here</a>.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group {{ $errors->first('background_color') ? 'has-error' : ''}}">
+                                    <div class="row">
+                                        <label class="col-lg-3 control-label label-right my-auto">Background Color</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="background_color" value="{{ $asset->background_color }}" required="" placeholder="#ABC123" />
+                                            <div class="help-block margin-bottom-none">
+                                                <small>Please provide the asset background color, <a href="https://htmlcolorcodes.com/" id="accentColor" target="_blank">choose html color here</a>.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="modal-footer">

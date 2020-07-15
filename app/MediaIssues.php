@@ -54,8 +54,8 @@ class MediaIssues extends Model
         return $this->hasOne('App\DriveAssets', 'id', 'drive_asset_id');
     }
 
-    public function accent()
+    public function stateAsset()
     {
-        return $this->hasOne('App\StateAccents', 'id', 'accent_id');
+        return $this->hasOne('App\StateAssets', 'id', 'state_asset_id');
     }
 }

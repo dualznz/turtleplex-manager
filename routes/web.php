@@ -34,6 +34,19 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard
     Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
+    // Media Issyes
+    Route::prefix('/media-issues')->group(function () {
+        Route::get('/', ['as' => 'media-issue', 'uses' => 'MediaIssuesController@index']);
+
+        // Update Issue Manager
+        Route::prefix('/updater/{id}')->group(function () {
+            Route::get('/step-1', ['as' => 'media-issues-updater-step1', 'uses' => 'MediaIssuesController@viewStep1']);
+            Route::post('/step-1', ['as' => 'media-issues-updater-step1-store', 'uses' => 'MediaIssuesController@storeStep1']);
+            Route::get('/step-2', ['as' => 'media-issues-updater-step2', 'uses' => 'MediaIssuesController@viewStep2']);
+            Route::post('/step-2', ['as' => 'media-issues-updater-step2-store', 'uses' => 'MediaIssuesController@']);
+        });
+    });
+
     // Media
     Route::prefix('/media/{server_slug}/{drive_slug}')->group(function () {
         Route::get('/', ['as' => 'media', 'uses' => 'MediaController@index']);

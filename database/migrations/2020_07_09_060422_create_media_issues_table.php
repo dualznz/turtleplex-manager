@@ -18,7 +18,7 @@ class CreateMediaIssuesTable extends Migration
             $table->integer('server_id');
             $table->integer('drive_id');
             $table->integer('drive_asset_id');
-            $table->integer('state_accet_id');
+            $table->integer('state_accent_id');
             $table->string('tmdb_url');
             $table->integer('tmdb_id')->nullable();
             $table->string('tmdb_media_type', 10)->default('none'); // none, movie, tv

@@ -15,6 +15,14 @@
                     <a href="{{ route('dashboard') }}"><i class="far fa-tachometer-alt"></i> <span>Dashboard</span></a>
                 </li>
 
+                @can ('viewMediaIssues')
+                    <li {{ request()->is('*media-issues') ? 'class=active' : '' }}>
+                        <a href="{{ route('media-issue') }}"><i class="fal fa-plug"></i> <span>Submission Issues</span>
+                            {!! \App\MediaIssues::where('state_asset_id', env('MEDIA_ISSUES_PENDING_ID'))->count() == 0 ? '' : '&nbsp;&nbsp;<span class="badge badge-danger">'.count(\App\MediaIssues::where('state_asset_id', env('MEDIA_ISSUES_PENDING_ID'))->get()).'</span>' !!}
+                        </a>
+                    </li>
+                @endcan
+
                 @if (count(\App\Drives::all()) != 0)
                     @can ('viewMedia')
                         <li>

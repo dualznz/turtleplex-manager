@@ -78,7 +78,7 @@ class StateAssetsController extends Controller
             'asset_name'        => 'required',
             'text_color'        => '',
             'background_color'  => '',
-            'accent_id'         => 'numeric',
+            'asset_id'          => 'required|numeric',
             'group_id'          => 'required|numeric',
         ]);
 
@@ -97,7 +97,7 @@ class StateAssetsController extends Controller
                 ->with('type', 'alert-warning');
         }
 
-        $a = StateAssets::where('id', $id)->first();
+        $a = StateAssets::where('id', $request->asset_id)->first();
         if (is_null($a)) {
             return redirect()->route('state-assets', $g->slug)
                 ->with('message', 'The state asset you selected does not exist, or you do not have permissions to view it!')
