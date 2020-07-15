@@ -68,4 +68,9 @@ class Media extends Model
     {
         return $this->hasOne('App\DriveAssets', 'id', 'drive_asset_id');
     }
+
+    public function stateAsset()
+    {
+        return $this->hasOne('App\StateAssets', 'id', 'state_asset_id');
+    }
 }

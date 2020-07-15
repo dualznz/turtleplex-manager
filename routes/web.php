@@ -34,6 +34,45 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard
     Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
+    // Media
+    Route::prefix('/media/{server_slug}/{drive_slug}')->group(function () {
+        Route::get('/', ['as' => 'media', 'uses' => 'MediaController@index']);
+        Route::get('/search', ['as' => 'media-search', 'uses' => 'MediaController@search']);
+        Route::get('/view/asset/{asset_id}', ['as' => 'media-asset', 'uses' => 'MediaController@viewAsset']);
+
+        // Add Media
+        Route::prefix('/add')->group(function () {
+            Route::get('/', ['as' => 'media-add', 'uses' => 'MediaController@add']);
+            Route::get('/{tmdb_media_type}/{tmdb_id}', ['as' => 'media-add-insert', 'uses' => 'MediaController@insertMedia']);
+            Route::post('/store', ['as' => 'media-store', 'uses' => 'MediaController@store']);
+        });
+
+        // Issue Adding Media
+        Route::prefix('/add_issue')->group(function () {
+            Route::post('/store', ['as' => 'media-issue-store', 'uses' => 'MediaIssuesController@store']);
+        });
+
+        // View Media
+        Route::prefix('/view/{media_type}/{slug}.{release_year}')->group(function () {
+            Route::get('/', ['as' => 'media-view', 'uses' => 'MediaController@viewMedia']);
+            Route::post('/store', ['as' => 'media-view-store', 'uses' => 'MediaController@viewMediaStore']);
+            Route::get('/remove', ['as' => 'media-remove', 'uses' => 'MediaController@remove']);
+            Route::post('/remove', ['as' => 'media-remove-store', 'uses' => 'MediaController@removeStore']);
+
+            // Move Media
+            Route::prefix('/move')->group(function () {
+                Route::get('/step-1', ['as' => 'media-move-step1', 'uses' => 'MediaController@viewMoveStep1']);
+                Route::post('/step-1', ['as' => 'media-move-step1-store', 'uses' => 'MediaController@storeMoveStep1']);
+                Route::get('/step-2', ['as' => 'media-move-step2', 'uses' => 'MediaController@viewMoveStep2']);
+                Route::post('/step-2', ['as' => 'media-move-step2-store', 'uses' => 'MediaController@storeMoveStep2']);
+                Route::get('/step-3', ['as' => 'media-move-step3', 'uses' => 'MediaController@viewMoveStep3']);
+                Route::post('/step-3', ['as' => 'media-move-step3-store', 'uses' => 'MediaController@storeMoveStep3']);
+                Route::get('/confirmation', ['as' => 'media-move-step4', 'uses' => 'MediaController@viewMoveStep4']);
+                Route::post('/confirmation', ['as' => 'media-move-step4-store', 'uses' => 'MediaController@storeMoveStep4']);
+            });
+        });
+    });
+
     // Servers
     Route::prefix('/servers')->group(function () {
         Route::get('/', ['as' => 'servers', 'uses' => 'ServersController@index']);

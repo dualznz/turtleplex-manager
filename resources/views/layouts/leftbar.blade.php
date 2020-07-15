@@ -15,6 +15,21 @@
                     <a href="{{ route('dashboard') }}"><i class="far fa-tachometer-alt"></i> <span>Dashboard</span></a>
                 </li>
 
+                @if (count(\App\Drives::all()) != 0)
+                    @can ('viewMedia')
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="fal fa-photo-video"></i> <span>Media</span><i class="mdi mdi-chevron-right pull-right"></i>
+                            </a>
+                            <ul class="xp-vertical-submenu">
+                                @foreach (\App\Drives::orderBy('drive_name', 'ASC')->get() as $drive)
+                                    <li {{ (request()->is('*media/'.$drive->server->server_name.'/'.$drive->slug.'/*') ? 'class=active' : '') }}><a href="{{ route('media', [$drive->server->slug, $drive->slug]) }}"><i class="fal fa-tv-retro"></i> <span>{{ $drive->drive_name }}</span></a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endcan
+                @endif
+
                 @can ('viewHardware')
                     <li>
                         <a href="javascript:void(0);">

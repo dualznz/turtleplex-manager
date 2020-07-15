@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AddMediaSearch extends Component
 {
-    public $search = '';
+    public $search = 'Matrix';
     public $drive;
     public $server;
 
