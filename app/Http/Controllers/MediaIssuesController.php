@@ -247,8 +247,8 @@ class MediaIssuesController extends Controller
             'drive_id'          => 'required|numeric',
             'asset_id'          => 'required|numeric',
             'issue_id'          => 'required|numeric',
-            'state_asset'       => 'required|numeric',
-            'tmdb_id'           => 'required|numeric',
+            'state_asset'       => 'required',
+            'tmdb_id'           => 'required',
             'media_type'        => 'required',
             'media_title'       => 'required',
             'release_year'      => 'required',
@@ -290,7 +290,7 @@ class MediaIssuesController extends Controller
                 ->with('type', 'alert-warning');
         }
 
-        $stateAsset = StateAssets::where('id', $request->state_asset_id)->first();
+        $stateAsset = StateAssets::where('id', $request->state_asset)->first();
         if (is_null($stateAsset)) {
             return redirect()->back()
                 ->with('message', 'The status you selected does not exist, or you do not have permissions to view it!')
@@ -328,11 +328,12 @@ class MediaIssuesController extends Controller
 
         $issue->tmdb_id = $request->tmdb_id;
         $issue->tmdb_media_type = $request->media_type;
-        $issue->complete = 1;
+        $issue->state_asset_id = $stateAsset->id;
+        $issue->completed = 1;
         $issue->save();
 
         return redirect()->route('media-issue')
-            ->with('message', 'Issue has been successfully resolved ')
+            ->with('message', 'Issue has been successfully resolved & '.$request->media_title.' ('.$request->release_year.') has been added to '.$drive->drive_name.'!')
             ->with('type', 'alert-success');
     }
 }
