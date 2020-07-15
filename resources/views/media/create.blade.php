@@ -75,7 +75,7 @@
                                 <div class="col-md-12" style="color: white;">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <img src="{{ $poster_154_path }}" class="img-shadow">
+                                            <img src="{{ $poster_154_path }}" class="img-thumbnail">
                                         </div>
                                         <div class="col-md-9">
                                             <span style="font-size: 26px;">{{ $media_title }} ({{ $release_year }})</span><br>

@@ -41,7 +41,7 @@
                         <tr>
                             <td>
                                 @if (!is_null($result['poster_path']))
-                                    <img src="https://image.tmdb.org/t/p/w92{{ $result['poster_path'] }}" class="img-shadow">
+                                    <img src="https://image.tmdb.org/t/p/w92{{ $result['poster_path'] }}" class="img-thumbnail">
                                 @else
                                     <img src="/static/assets/images/noposter_92.jpg" class="img-shadow">
                                 @endif
@@ -60,9 +60,9 @@
                                     @endcan
                                 @else
                                     <?php
-                                    $s = \App\Media::where('drive_id', $drive->id)->where('tmdb_id', $result['id'])->first()
+                                    $s = \App\Media::where('server_id', $server->id)->where('drive_id', $drive->id)->whereLike('media_title', $result['title'])->first();
                                     ?>
-                                    <a href="{{ route('media-view', [$server->slug, $drive->slug, 'tv', $s->slug, $s->release_year]) }}" class="btn btn-outline-secondary">Already Exists</a>
+                                    <a href="{{ route('media-view', [$s->server->slug, $s->drive->slug, $s->media_type, $s->slug, $s->release_year]) }}" class="btn btn-outline-secondary">Already Exists</a>
                                 @endif
                             </td>
                         </tr>
@@ -70,7 +70,7 @@
                         <tr>
                             <td>
                                 @if (!is_null($result['poster_path']))
-                                    <img src="https://image.tmdb.org/t/p/w92{{ $result['poster_path'] }}" class="img-shadow">
+                                    <img src="https://image.tmdb.org/t/p/w92{{ $result['poster_path'] }}" class="img-thumbnail">
                                 @else
                                     <img src="/static/assets/images/noposter_92.jpg" class="img-shadow">
                                 @endif
@@ -89,9 +89,9 @@
                                     @endcan
                                 @else
                                     <?php
-                                    $s = \App\Media::where('drive_id', $drive->id)->where('tmdb_id', $result['id'])->first()
+                                    $s = \App\Media::where('server_id', $server->id)->where('drive_id', $drive->id)->whereLike('media_title', $result['title'])->first();
                                     ?>
-                                    <a href="{{ route('media-view', [$server->slug, $drive->slug, 'tv', $s->slug, $s->release_year]) }}" class="btn btn-outline-secondary">Already Exists</a>
+                                    <a href="{{ route('media-view', [$s->server->slug, $s->drive->slug, $s->media_type, $s->slug, $s->release_year]) }}" class="btn btn-outline-secondary">Already Exists</a>
                                 @endif
                             </td>
                         </tr>

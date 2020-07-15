@@ -35,7 +35,7 @@
                             <div class="col-md-12" style="color: white;">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="{{ $media->poster_154_path }}" class="img-shadow">
+                                        <img src="{{ $media->poster_154_path }}" class="img-thumbnail">
                                     </div>
                                     <div class="col-md-9">
                                         <span style="font-size: 26px;">{{ $media->media_title }} ({{ $media->release_year }})</span><br>
@@ -100,13 +100,13 @@
                                 <label class="col-lg-2 control-label label-right my-auto">Media Options</label>
                                 <div class="col-lg-8">
                                     @can ('editDriveMedia')
-                                        <a href="javascript:void(0);" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editMedia" id="editMediaI"><i class="fal fa-edit"></i> Edit Media</a>&nbsp;&nbsp;
+                                        <a href="javascript:void(0);" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editMedia"><i class="fal fa-edit"></i> Edit Media</a>&nbsp;&nbsp;
                                     @endcan
                                     @can ('moveDriveMedia')
-                                        <a href="{{ route('media-move-step1', [$server->slug, $drive->slug, $media->media_type, $media->slug, $media->release_year]) }}" class="btn btn-sm btn-success" id="moveMedia"><i class="fal fa-compress-alt"></i> Move Media</a>&nbsp;&nbsp;
+                                        <a href="{{ route('media-move-step1', [$server->slug, $drive->slug, $media->media_type, $media->slug, $media->release_year]) }}" class="btn btn-sm btn-success"><i class="fal fa-compress-alt"></i> Move Media</a>&nbsp;&nbsp;
                                     @endcan
                                     @can ('removeDriveMedia')
-                                        <a href="{{ route('media-remove', [$server->slug, $drive->slug, $media->media_type, $media->slug, $media->release_year]) }}" class="btn btn-sm btn-danger" id="removeMedia"><i class="fal fa-trash-alt"></i> Remove Media</a>
+                                        <a href="{{ route('media-remove', [$server->slug, $drive->slug, $media->media_type, $media->slug, $media->release_year]) }}" class="btn btn-sm btn-danger"><i class="fal fa-trash-alt"></i> Remove Media</a>
                                     @endcan
                                 </div>
                             </div>
@@ -122,4 +122,65 @@
         <!-- End Row -->
     </div>
     <!-- End XP Contentbar -->
+
+    <!-- Start Edit Media -->
+    <div class="modal fade" id="editMedia" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form class="form-horizontal" method="POST" action="{{ route('media-view-store', [$server->slug, $drive->slug, $media->media_type, $media->slug, $media->release_year]) }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleLargeModalLabel">Edit Media</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+
+                            <div class="form-group {{ $errors->first('drive_assets') ? 'has-error' : ''}}">
+                                <div class="row">
+                                    <label class="col-lg-3 control-label label-right my-auto">Media Folder</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" name="drive_assets" id="drive_assets" required>
+                                            @foreach (\App\DriveAssets::where('server_id', $server->id)->where('drive_id', $drive->id)->get() as $a)
+                                                <option value="{{ $a->id }}" {{ $a->id == $media->asset->id ? 'selected' : '' }}>{{ $a->asset_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="help-block margin-bottom-none">
+                                            <small>Please select which asset folder this media is in.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group {{ $errors->first('media_state') ? 'has-error' : ''}}">
+                                <div class="row">
+                                    <label class="col-lg-3 control-label label-right my-auto">Media State</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" name="media_state" id="media_state" required>
+                                            @foreach (\App\StateAssets::where('group_id', $media_state_group)->orderBy('asset_name', 'ASC')->get() as $s)
+                                                <option value="{{ $s->id }}" {{ $s->id == $media->state_asset_id ? 'selected' : '' }}>{{ $s->asset_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="help-block margin-bottom-none">
+                                            <small>Please select which state this media is in.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Media</button>
+                        <input type="hidden" name="server_id" value="{{ $server->id }}">
+                        <input type="hidden" name="drive_id" value="{{ $drive->id }}">
+                        <input type="hidden" name="media_id" value="{{ $media->id }}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    <!-- End Edit Media -->
 @endsection

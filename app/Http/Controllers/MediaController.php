@@ -267,7 +267,7 @@ class MediaController extends Controller
         }
 
         $media->drive_asset_id = $request->drive_assets;
-        $media->accent_id = $request->media_state;
+        $media->state_asset_id = $request->media_state;
         $media->save();
 
         return redirect()->back()
@@ -776,7 +776,7 @@ class MediaController extends Controller
                 ->with('type', 'alert-warning');
         }
 
-        return view('media.search', [
+        return view('media.search.search', [
             'server'    => $server,
             'drive'     => $drive
         ]);
@@ -813,7 +813,7 @@ class MediaController extends Controller
             ->where('drive_asset_id', $asset->id)
             ->orderBy('media_title', 'ASC')->paginate(10);
 
-        return view('media.asset', [
+        return view('media.asset.asset', [
             'server'    => $server,
             'drive'     => $drive,
             'asset'     => $asset,

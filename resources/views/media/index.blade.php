@@ -74,7 +74,7 @@
                                 @else
                                     @foreach ($media as $m)
                                         <tr>
-                                            <td><img src="{{ $m->poster_92_path }}" class="img-shadow"></td>
+                                            <td><img src="{{ $m->poster_92_path }}" class="img-thumbnail"></td>
                                             <td>
                                                 <a href="https://www.themoviedb.org/movie/{{ $m->tmdb_id }}" target="_blank"><span style="font-size: 22px;">{{ $m->media_title }}</span>&nbsp;&nbsp;&nbsp;<span style="color: #888888;">({{ $m->release_year }})</span></a><br>
                                                 <i class="fas fa-video"></i> <b>Type:</b> {{ $m->asset->asset_name }} &nbsp;&nbsp;
