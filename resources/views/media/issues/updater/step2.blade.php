@@ -124,11 +124,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group {{ $errors->first('Status') ? 'has-error' : ''}}">
+                            <div class="form-group {{ $errors->first('state_asset') ? 'has-error' : ''}}">
                                 <div class="row">
                                     <label class="col-lg-2 control-label label-right my-auto">Status</label>
                                     <div class="col-lg-5">
-                                        <select class="form-control" name="drive_assets" id="drive_assets" required>
+                                        <select class="form-control" name="state_asset" id="state_asset" required>
                                             <option selected disabled>Please select media status...</option>
                                             @foreach (\App\StateAssets::where('group_id', env('STATE_MEDIA_ISSUES_ASSET_GROUP'))->orderBy('asset_name', 'ASC')->get() as $a)
                                                 <option value="{{ $a->id }}" {{ $a->id == $issue->asset_id ? 'selected' : '' }}>{{ $a->asset_name }}</option>
@@ -150,6 +150,7 @@
                                         <button class="btn btn-primary" type="submit">Complete Issue&nbsp; <i class="far fa-chevron-double-right"></i></button>
                                         <input type="hidden" name="server_id" value="{{ $issue->server->id }}">
                                         <input type="hidden" name="drive_id" value="{{ $issue->drive->id }}">
+                                        <input type="hidden" name="asset_id" value="{{ $issue->asset->id }}">
                                         <input type="hidden" name="issue_id" value="{{ $issue->id }}">
                                         <input type="hidden" name="tmdb_id" value="{{ $tmdb_id }}">
                                         <input type="hidden" name="media_type" value="{{ $media_type }}">

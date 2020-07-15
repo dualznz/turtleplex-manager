@@ -43,7 +43,7 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
             Route::get('/step-1', ['as' => 'media-issues-updater-step1', 'uses' => 'MediaIssuesController@viewStep1']);
             Route::post('/step-1', ['as' => 'media-issues-updater-step1-store', 'uses' => 'MediaIssuesController@storeStep1']);
             Route::get('/step-2', ['as' => 'media-issues-updater-step2', 'uses' => 'MediaIssuesController@viewStep2']);
-            Route::post('/step-2', ['as' => 'media-issues-updater-step2-store', 'uses' => 'MediaIssuesController@']);
+            Route::post('/step-2', ['as' => 'media-issues-updater-step2-store', 'uses' => 'MediaIssuesController@storeStep2']);
         });
     });
 
