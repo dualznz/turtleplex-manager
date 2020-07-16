@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-1 control-label"></div>
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-7">
                                         @if (count($drives) > 0)
                                             <b>Warning:</b> there are network drives assigned to this server <i class="fas fa-share"></i>&nbsp;&nbsp;<a class="btn btn-warning" href="{{ route('servers') }}">Cancel</a> &nbsp;<button class="btn btn-danger" type="submit" title="Action has been disabled, please remove or move all drives & media first!" disabled>Remove Server</button>
                                         @else

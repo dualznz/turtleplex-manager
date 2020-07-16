@@ -22,7 +22,8 @@ class MediaIssuesController extends Controller
     {
         $this->middleware('can:viewMediaIssues', ['only' => 'index']);
         $this->middleware('can:sendMediaIssue', ['only' => 'storeSubmission']);
-        $this->middleware('can:updateMediaIssue', ['viewStep1', 'storeStep1', 'viewStep2', 'storeStep2']);
+        $this->middleware('can:updateMediaIssue', ['only' => 'viewStep1', 'storeStep1', 'viewStep2', 'storeStep2']);
+        $this->middleware('can:removeMediaIssue', ['only' => 'remove', 'removeStore']);
     }
 
     public function index()
