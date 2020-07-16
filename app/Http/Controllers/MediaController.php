@@ -6,6 +6,7 @@ use App\DriveAssets;
 use App\Drives;
 use App\Media;
 use App\Servers;
+use App\StateAssets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -817,6 +818,54 @@ class MediaController extends Controller
             'drive'     => $drive,
             'asset'     => $asset,
             'media'     => $media
+        ]);
+    }
+
+    public function viewAssetFiltered($server_slug, $drive_slug, $asset_id, $state_asset_id)
+    {
+        $server = Servers::where('slug', $server_slug)->first();
+        if (is_null($server)) {
+            return redirect()->back()
+                ->with('message', 'The server you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        $drive = Drives::where('slug', $drive_slug)
+            ->where('server_id', $server->id)->first();
+        if (is_null($drive)) {
+            return redirect()->back()
+                ->with('message', 'The drive you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        $asset = DriveAssets::where('id', $asset_id)
+            ->where('server_id', $server->id)
+            ->where('drive_id', $drive->id)->first();
+        if (is_null($asset)) {
+            return redirect()->back()
+                ->with('message', 'The asset you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        $state_asset = StateAssets::where('id', $state_asset_id)->first();
+        if (is_null($state_asset)) {
+            return redirect()->back()
+                ->with('message', 'The media state asset you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        $media = Media::where('server_id', $server->id)
+            ->where('drive_id', $drive->id)
+            ->where('state_asset_id', $state_asset->id)
+            ->orderBy('media_title', 'ASC')->get();
+
+        ddd($media);
+
+        return view('media.asset.filter.filter', [
+            'server'        => $server,
+            'drive'         => $drive,
+            'asset'         => $asset,
+            'media'         => $media
         ]);
     }
 }

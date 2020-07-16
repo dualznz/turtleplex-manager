@@ -55,6 +55,7 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
         Route::get('/', ['as' => 'media', 'uses' => 'MediaController@index']);
         Route::get('/search', ['as' => 'media-search', 'uses' => 'MediaController@search']);
         Route::get('/view/asset/{asset_id}', ['as' => 'media-asset', 'uses' => 'MediaController@viewAsset']);
+        Route::get('/view/asset/{asset_id}/filter/{state_asset_id}', ['as' => 'media-asset-filtered', 'uses' => 'MediaController@viewAssetFiltered']);
 
         // Add Media
         Route::prefix('/add')->group(function () {

@@ -124,18 +124,35 @@
                                 </div>
                             </div>
 
-                            <div class="form-group {{ $errors->first('state_asset') ? 'has-error' : ''}}">
+                            <div class="form-group {{ $errors->first('state_issue_asset') ? 'has-error' : ''}}">
                                 <div class="row">
-                                    <label class="col-lg-2 control-label label-right my-auto">Status</label>
+                                    <label class="col-lg-2 control-label label-right my-auto">Issue Status</label>
                                     <div class="col-lg-5">
-                                        <select class="form-control" name="state_asset" id="state_asset" required>
-                                            <option selected disabled>Please select media status...</option>
+                                        <select class="form-control" name="state_issue_asset" id="state_issue_asset" required>
+                                            <option selected disabled>Please select issue status...</option>
                                             @foreach (\App\StateAssets::where('group_id', env('STATE_MEDIA_ISSUES_ASSET_GROUP'))->orderBy('asset_name', 'ASC')->get() as $a)
                                                 <option value="{{ $a->id }}" {{ $a->id == $issue->asset_id ? 'selected' : '' }}>{{ $a->asset_name }}</option>
                                             @endforeach
                                         </select>
                                         <div class="help-block margin-bottom-none">
-                                            <small>Please select which status this submission issue is in.</small>
+                                            <small>Please select which issue status this media is in.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group {{ $errors->first('state_asset') ? 'has-error' : ''}}">
+                                <div class="row">
+                                    <label class="col-lg-2 control-label label-right my-auto">Media Status</label>
+                                    <div class="col-lg-5">
+                                        <select class="form-control" name="state_asset" id="state_asset" required>
+                                            <option selected disabled>Please select media status...</option>
+                                            @foreach (\App\StateAssets::where('group_id', env('STATE_MEDIA_ASSET_GROUP'))->orderBy('asset_name', 'ASC')->get() as $a)
+                                                <option value="{{ $a->id }}" {{ $a->id == $issue->asset_id ? 'selected' : '' }}>{{ $a->asset_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="help-block margin-bottom-none">
+                                            <small>Please select which media status will be given when added to the media folder.</small>
                                         </div>
                                     </div>
                                 </div>

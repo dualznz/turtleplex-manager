@@ -249,6 +249,7 @@ class MediaIssuesController extends Controller
             'drive_id'          => 'required|numeric',
             'asset_id'          => 'required|numeric',
             'issue_id'          => 'required|numeric',
+            'state_issue_asset' => 'required',
             'state_asset'       => 'required',
             'tmdb_id'           => 'required',
             'media_type'        => 'required',
@@ -292,10 +293,17 @@ class MediaIssuesController extends Controller
                 ->with('type', 'alert-warning');
         }
 
+        $stateIssueAsset = StateAssets::where('id', $request->state_issue_asset)->first();
+        if (is_null($stateIssueAsset)) {
+            return redirect()->back()
+                ->with('message', 'The issue status you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
         $stateAsset = StateAssets::where('id', $request->state_asset)->first();
         if (is_null($stateAsset)) {
             return redirect()->back()
-                ->with('message', 'The status you selected does not exist, or you do not have permissions to view it!')
+                ->with('message', 'The media status you selected does not exist, or you do not have permissions to view it!')
                 ->with('type', 'alert-warning');
         }
 
@@ -313,7 +321,7 @@ class MediaIssuesController extends Controller
         $media->server_id = $server->id;
         $media->drive_id = $drive->id;
         $media->drive_asset_id = $asset->id;
-        $media->state_asset_id = $request->state_asset;
+        $media->state_asset_id = $stateAsset->id;
         $media->tmdb_id = $request->tmdb_id;
         $media->media_title = $request->media_title;
         $media->release_year = $request->release_year;
@@ -330,7 +338,7 @@ class MediaIssuesController extends Controller
 
         $issue->tmdb_id = $request->tmdb_id;
         $issue->tmdb_media_type = $request->media_type;
-        $issue->state_asset_id = $stateAsset->id;
+        $issue->state_asset_id = $stateIssueAsset->id;
         $issue->completed = 1;
         $issue->save();
 
@@ -359,7 +367,7 @@ class MediaIssuesController extends Controller
             'server_id'         => 'required|numeric',
             'drive_id'          => 'required|numeric',
             'issue_id'          => 'required|numeric',
-            'asset_id'    => 'required|numeric'
+            'asset_id'          => 'required|numeric'
         ]);
 
         if ($validator->fails()) {
