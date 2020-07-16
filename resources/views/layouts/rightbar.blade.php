@@ -28,7 +28,7 @@
                                 <a class="dropdown-toggle user-profile-img" href="#" role="button" id="xp-userprofile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ auth()->user()->avatar() }}" alt="user-profile" class="rounded-circle img-fluid"><span class="xp-user-live"></span></a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="xp-userprofile">
                                     <a class="dropdown-item" href="#">Welcome, {{ auth()->user()->username }}</a>
-                                    <a class="dropdown-item" href="#"><i class="mdi mdi-settings mr-2"></i> Settings</a>
+                                    <!--<a class="dropdown-item" href="#"><i class="mdi mdi-settings mr-2"></i> Settings</a>-->
                                     <a class="dropdown-item"  href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-logout mr-2"></i> Logout</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                                 </div>
                             </div>

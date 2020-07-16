@@ -137,6 +137,37 @@
 
                         </form>
 
+                        <div class="col-md-12">
+                            <p>&nbsp;</p>
+                        </div>
+
+                        <p style="font-size: 16px;">Delete Account</p>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-1 control-label"></div>
+                                <div class="col-lg-5">
+                                    <b>Please Note:</b> Destroying this users account will remove the ability for them to login into the management portal and thus they will have to be re-invited in order to access the management portal again.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-1 control-label"></div>
+                                <div class="col-lg-5">
+                                    @if (Auth()->user()->id == $u->id)
+                                        <button class="btn btn-danger" disabled><i class="far fa-trash"></i> Delete</button>
+                                    @else
+                                        <a class="btn btn-danger" href="{{ route('developer-users-destroy', $u->id) }}" onclick="event.preventDefault();document.getElementById('delete-form-{{ $u->id }}').submit();"><i class="far fa-trash"></i> Delete</a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="delete-form-{{ $u->id }}" action="{{ route('developer-users-destroy', $u->id) }}" method="POST" style="display: none;">@csrf</form>
+
+
 
                     </div>
                 </div>

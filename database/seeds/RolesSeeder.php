@@ -26,8 +26,6 @@ class RolesSeeder extends Seeder
         $staff->givePermissionTo('viewMediaSearch');
         $staff->givePermissionTo('viewMediaIssues');
         $staff->givePermissionTo('sendMediaIssue');
-        $staff->givePermissionTo('updateMediaIssue');
-        $staff->givePermissionTo('removeMediaIssue');
 
         // media area
         $staff->givePermissionTo('viewMedia');
