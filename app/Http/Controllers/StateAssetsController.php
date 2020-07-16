@@ -27,7 +27,8 @@ class StateAssetsController extends Controller
                 ->with('type', 'alert-warning');
         }
 
-        $a = StateAssets::where('group_id', $g->id)->get();
+        $a = StateAssets::where('group_id', $g->id)
+            ->orderBy('asset_name', 'ASC')->get();
 
         return view('states.assets.index', [
             'group'     => $g,
