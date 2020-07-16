@@ -2,11 +2,9 @@
 
     <div class="col-lg-12">
         <div class="input-group">
-            @can ('searchDriveMedia')
-                <div class="input-group">
-                    <input wire:model="search" type="search" class="form-control" style="border-radius: 25px;" placeholder="Search" aria-label="Search" aria-describedby="button-addon2"><button class="btn btn-rounded btn-primary" type="submit" id="button-addon2">GO</button>
-                </div>
-            @endcan
+            <div class="input-group">
+                <input wire:model="search" type="search" class="form-control" style="border-radius: 25px;" placeholder="Search" aria-label="Search" aria-describedby="button-addon2"><button class="btn btn-rounded btn-primary" type="submit" id="button-addon2">GO</button>
+            </div>
         </div>
     </div>
 
@@ -48,7 +46,7 @@
                     @if ($result['media_type'] == 'movie')
                         <tr>
                             <td>
-                                @if ($result['poster_92_path'] != '/static/assets/images/noposter_92.jpg')
+                                @if ($result['poster_92_path'] != '/static/img/noposter.jpg')
                                     <img src="{{ $result['poster_92_path'] }}" class="img-shadow">
                                 @else
                                     <img src="/static/img/noposter.jpg" class="img-shadow">
@@ -71,7 +69,7 @@
                     @elseif ($result['media_type'] == 'tv')
                         <tr>
                             <td>
-                                @if ($result['poster_92_path'] != '/static/assets/images/noposter_92.jpg')
+                                @if ($result['poster_92_path'] != '/static/img/noposter.jpg')
                                     <img src="{{ $result['poster_92_path'] }}" class="img-shadow">
                                 @else
                                     <img src="/static/img/noposter_92.jpg" class="img-shadow">
@@ -99,6 +97,5 @@
             </tbody>
         </table>
     </div>
-
 
 </div>

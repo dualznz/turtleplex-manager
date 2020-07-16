@@ -33,6 +33,7 @@ Route::get('tmdb', ['as' => 'tmdb', 'uses' => 'TmdbController@index']);
 Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard
     Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
+    Route::get('/media-search', ['as' => 'global-media-search', 'uses' => 'MediaSearchController@index']);
 
     // Media Issyes
     Route::prefix('/media-issues')->group(function () {

@@ -15,6 +15,10 @@
                     <a href="{{ route('dashboard') }}"><i class="far fa-tachometer-alt"></i> <span>Dashboard</span></a>
                 </li>
 
+                @can ('viewMediaSearch')
+                    <li {{ request()->is('*media-search') ? 'class=active' : '' }}><a href="{{ route('global-media-search') }}"><i class="fal fa-search"></i> <span>Media Search</span></a></li>
+                @endcan
+
                 @can ('viewMediaIssues')
                     <li {{ request()->is('*media-issues') ? 'class=active' : '' }}>
                         <a href="{{ route('media-issue') }}"><i class="fal fa-plug"></i> <span>Submission Issues</span>
