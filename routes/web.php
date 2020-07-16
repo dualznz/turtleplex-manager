@@ -147,6 +147,15 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
             Route::post('/destroy/{id}', ['as' => 'developer-invites-destroy', 'uses' => 'Developer\InvitesController@destroy']);
         });
 
+        // Users
+        Route::prefix('/users')->group(function () {
+            Route::get('/', ['as' => 'developer-users', 'uses' => 'Developer\UsersController@index']);
+            Route::get('/edit/{id}', ['as' => 'developer-users-edit', 'uses' => 'Developer\UsersController@edit']);
+            Route::post('/update/{id}', ['as' => 'developer-users-update', 'uses' => 'Developer\UsersController@update']);
+            Route::post('/update/{id}/password', ['as' => 'developer-users-update-password', 'uses' => 'Developer\UpdatePasswordController@store']);
+            Route::post('/destroy/{id}', ['as' => 'developer-users-destroy', 'uses' => 'Developer\UsersController@destroy']);
+        });
+
         // Permission groups
         Route::prefix('/permissions')->group(function () {
             Route::get('/', ['as' => 'developer-permissions', 'uses' => 'Developer\Permissions\PermissionsController@index']);
