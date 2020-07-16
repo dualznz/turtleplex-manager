@@ -10,7 +10,7 @@
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item">Hardware</li>
             <li class="breadcrumb-item"><a href="{{ route('drives') }}"><i class="fal fa-hdd"></i> Hard Drives</a></li>
-            <li class="breadcrumb-item active"><i class="fal fa-edit"></i> Edit Drive</li>
+            <li class="breadcrumb-item active">Edit Drive</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->

@@ -1,16 +1,15 @@
 @section('title')
-    Remove Drive
+    Remove Issue
 @endsection
 @extends('layouts.main')
 @section('rightbar-content')
     <!-- Start XP Breadcrumbbar -->
     <div class="xp-breadcrumbbar text-center">
-        <h4 class="page-title">Remove Drive</h4>
+        <h4 class="page-title">Remove Issue</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item">Hardware</li>
-            <li class="breadcrumb-item"><a href="{{ route('drives') }}"><i class="fal fa-hdd"></i> Hard Drives</a></li>
-            <li class="breadcrumb-item active">Remove Drive</li>
+            <li class="breadcrumb-item"><a href="{{ route('media-issue') }}"></a><i class="fal fa-plug"></i> Submission Issues</li>
+            <li class="breadcrumb-item active">Remove Issue</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->
@@ -26,55 +25,55 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Remove Drive</h5>
-                        <h6 class="card-subtitle">Remove existing hard drive from management portal.</h6>
+                        <h5 class="card-title text-black">Remove Issue</h5>
+                        <h6 class="card-subtitle">Remove media submission issue if it is a duplicate or is invalid.</h6>
                     </div>
                     <div class="card-body">
 
-                        <form class="form-horizontal" method="POST" action="{{ route('drives-remove-store', $drive->slug) }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('media-issues-remove-store', [$issue->id]) }}">
                             @csrf
 
                             <div class="form-group">
                                 <div class="row">
-                                    <label class="col-lg-2 control-label label-right my-auto">Drive Name</label>
+                                    <label class="col-lg-2 control-label label-right my-auto">Server</label>
                                     <div class="col-lg-5">
-                                        {{ $drive->drive_name }}
+                                        {{ $issue->server->server_name }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="row">
-                                    <label class="col-lg-2 control-label label-right my-auto">Attached Server</label>
+                                    <label class="col-lg-2 control-label label-right my-auto">Drive</label>
                                     <div class="col-lg-5">
-                                        {{ $drive->server->server_name }}
+                                        {{ $issue->drive->drive_name }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="row">
-                                    <label class="col-lg-2 control-label label-right my-auto">Drive Folder</label>
+                                    <label class="col-lg-2 control-label label-right my-auto">Folder Path</label>
                                     <div class="col-lg-5">
-                                        {{ $drive->drive_folder }}
+                                        <span class="text-green"><i class="far fa-folder"></i>&nbsp;{{ $issue->server->network_path.$issue->drive->drive_folder.$issue->asset->asset_folder }}</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="row">
-                                    <label class="col-lg-2 control-label label-right my-auto">Full Path</label>
+                                    <label class="col-lg-2 control-label label-right my-auto">Tmdb URL:</label>
                                     <div class="col-lg-5">
-                                        <span class="text-green"><i class="far fa-folder"></i>&nbsp;{{ $drive->server->network_path.$drive->drive_folder }}</span>
+                                        <a href="{{ $issue->tmdb_url }}" target="_blank">{{ $issue->tmdb_url }}</a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="row">
-                                    <label class="col-lg-2 control-label label-right my-auto">No. of Media</label>
+                                    <label class="col-lg-2 control-label label-right my-auto">Current Status:</label>
                                     <div class="col-lg-5">
-                                        <span class="badge badge-info">{{ count(\App\Media::where('server_id', $drive->server->id)->where('drive_id', $drive->id)->get()) }}</span>
+                                        {!! \App\Helpers\AccentHelper::accent($issue->stateAsset->asset_name, $issue->stateAsset->text_color, $issue->stateAsset->background_color) !!}
                                     </div>
                                 </div>
                             </div>
@@ -85,11 +84,11 @@
                                     <div class="col-lg-8">
                                         <div align="center">
                                             <p>
-                                                <b>Warning:</b> please confirm that you wish to remove this drive,<br>
+                                                <b>Warning:</b> please confirm that you wish to remove this media item,<br>
                                                 This operation cannot be reversed and any associated data <b>will</b> be removed!
                                             </p>
                                             <p style="font-size: 15px;">
-                                                To remove this drive please type <b>{{ $drive->slug }}</b> in the box below.
+                                                To remove this server please type <b>I-AGREE</b> in the box below.
                                             </p>
                                             <input type="text" class="form-control col-md-3" name="confirmation" value="{{ old('confirmation') }}" placeholder="Confirm Code....">
                                         </div>
@@ -101,14 +100,12 @@
                                 <div class="row">
                                     <div class="col-md-1 control-label"></div>
                                     <div class="col-lg-5">
-                                        @if (count($assets) > 0)
-                                            <b>Warning:</b> there are assets assigned to this server <i class="fas fa-share"></i>&nbsp;&nbsp;<a class="btn btn-warning" href="{{ route('drives') }}">Cancel</a> &nbsp;<button class="btn btn-danger" type="submit" title="Action has been disabled, please remove or move all assets first!" disabled>Remove Drive</button>
-                                        @else
-                                            <a class="btn btn-warning" href="{{ route('drives') }}">Cancel</a> &nbsp;
-                                            <button class="btn btn-danger" type="submit">Remove Drive</button>
-                                        @endif
-                                        <input type="hidden" name="drive_id" value="{{ $drive->id }}">
-                                        <input type="hidden" name="server_id" value="{{ $drive->server->id }}">
+                                        <a href="{{ route('media-issue') }}" class="btn btn-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                                        <button class="btn btn-danger" type="submit">Remove Issue</button>
+                                        <input type="hidden" name="issue_id" value="{{ $issue->id }}">
+                                        <input type="hidden" name="server_id" value="{{ $issue->server->id }}">
+                                        <input type="hidden" name="drive_id" value="{{ $issue->drive->id}}">
+                                        <input type="hidden" name="asset_id" value="{{ $issue->asset->id }}">
                                     </div>
                                 </div>
                             </div>

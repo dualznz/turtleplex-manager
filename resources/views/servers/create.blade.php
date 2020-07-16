@@ -10,7 +10,7 @@
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item">Hardware</li>
             <li class="breadcrumb-item"><a href="{{ route('servers') }}"><i class="fal fa-server"></i> Servers</a></li>
-            <li class="breadcrumb-item active"><i class="far fa-plus"></i> Add Server</li>
+            <li class="breadcrumb-item active">Add Server</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->

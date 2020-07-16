@@ -12,7 +12,6 @@ class MediaIssuesSorting extends Component
     public function render()
     {
         $sortResults = [];
-
         $sortResults = MediaIssues::where('completed', $this->sorting)->orderBy('id', 'DESC')->get();
 
         return view('livewire.media-issues-sorting', [

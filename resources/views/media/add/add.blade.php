@@ -10,7 +10,7 @@
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><i class="fal fa-photo-video"></i> Media</li>
             <li class="breadcrumb-item "><a href="{{ route('media', [$server->slug, $drive->slug]) }}"><i class="fal fa-tv-retro"></i> {{ $drive->drive_name }}</a></li>
-            <li class="breadcrumb-item active"><i class="far fa-plus"></i> Add Media</li>
+            <li class="breadcrumb-item active">Add Media</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->

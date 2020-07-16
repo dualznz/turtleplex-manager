@@ -11,7 +11,7 @@
             <li class="breadcrumb-item">Hardware</li>
             <li class="breadcrumb-item"><a href="{{ route('drives') }}"><i class="fal fa-hdd"></i> Hard Drives</a></li>
             <li class="breadcrumb-item"><a href="{{ route('drive-assets', [$drive->slug]) }}"></a><i class="fad fa-books"></i> Drive Assets: {{ $drive->drive_name }}</li>
-            <li class="breadcrumb-item active"><i class="far fa-trash-alt"></i> Remove Asset Folder</li>
+            <li class="breadcrumb-item active">Remove Asset Folder</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->

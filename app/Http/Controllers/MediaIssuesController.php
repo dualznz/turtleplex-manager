@@ -22,6 +22,7 @@ class MediaIssuesController extends Controller
     {
         $this->middleware('can:viewMediaIssues', ['only' => 'index']);
         $this->middleware('can:sendMediaIssue', ['only' => 'storeSubmission']);
+        $this->middleware('can:updateMediaIssue', ['viewStep1', 'storeStep1', 'viewStep2', 'storeStep2']);
     }
 
     public function index()
@@ -335,5 +336,84 @@ class MediaIssuesController extends Controller
         return redirect()->route('media-issue')
             ->with('message', 'Issue has been successfully resolved & '.$request->media_title.' ('.$request->release_year.') has been added to '.$drive->drive_name.'!')
             ->with('type', 'alert-success');
+    }
+
+    public function remove($id) {
+        $issue = MediaIssues::where('id', $id)->first();
+        if (is_null($issue)) {
+            return redirect()->route('media-issue')
+                ->with('message', 'The issue you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        return view('media.issues.remove', [
+            'issue' => $issue
+        ]);
+    }
+
+    public function removeStore(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'confirmation'      => 'required',
+            'server_id'         => 'required|numeric',
+            'drive_id'          => 'required|numeric',
+            'issue_id'          => 'required|numeric',
+            'asset_id'    => 'required|numeric'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->with('message', 'Failed to remove media issue! have you filled in all the required fields ?')
+                ->with('type', 'alert-danger')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $server = Servers::where('id', $request->server_id)->first();
+        if (is_null($server)) {
+            return redirect()->back()
+                ->with('message', 'The server you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        $drive = Drives::where('id', $request->drive_id)
+            ->where('server_id', $server->id)->first();
+        if (is_null($drive)) {
+            return redirect()->back()
+                ->with('message', 'The drive you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        $asset = DriveAssets::where('id', $request->asset_id)
+            ->where('server_id', $server->id)->first();
+        if (is_null($asset)) {
+            return redirect()->back()
+                ->with('message', 'The drive asset you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        $issue = MediaIssues::where('id', $request->issue_id)
+            ->where('server_id', $server->id)
+            ->where('drive_id', $drive->id)
+            ->where('drive_asset_id', $asset->id)->first();
+        if (is_null($issue)) {
+            return redirect()->back()
+                ->with('message', 'The media issue you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        if ($request->confirmation != 'I-AGREE') {
+            return redirect()->back()
+                ->with('message', 'You have entered the incorrect confirmation code, please try again!')
+                ->with('type', 'alert-warning')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $issue->delete();
+
+        return redirect()->route('media-issue')
+            ->with('message', 'Media issue has been successfully removed!')
+            ->with('type', 'alert-danger');
     }
 }

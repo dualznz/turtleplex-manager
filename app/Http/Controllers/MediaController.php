@@ -707,9 +707,9 @@ class MediaController extends Controller
     public function removeStore(Request $request, $server_slug, $drive_slug,$media_type ,$slug, $release_year)
     {
         $validator = Validator::make($request->all(), [
-            'drive_id'     => 'required|numeric',
-            'server_id'    => 'required|numeric',
-            'media_id'     => 'required|numeric'
+            'drive_id'          => 'required|numeric',
+            'server_id'         => 'required|numeric',
+            'media_id'          => 'required|numeric'
         ]);
 
         if ($validator->fails()) {

@@ -43,7 +43,7 @@
                                 <a href="{{ route('media-issues-updater-step1', [$issue->id]) }}" class="btn btn-round btn-info"><i class="far fa-comment-alt-edit"></i></a>
                             @endcan
                             @can ('removeMediaIssue')
-                                <a href="javascript:void(0);" class="btn btn-round btn-danger"><i class="far fa-trash-alt"></i></a>
+                                <a href="{{ route('media-issues-remove', [$issue->id]) }}" class="btn btn-round btn-danger"><i class="far fa-trash-alt"></i></a>
                             @endcan
                         </span>
                     </td>
