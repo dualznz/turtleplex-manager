@@ -30,7 +30,20 @@
                         <h6 class="card-subtitle">View media contained within the selected asset folder.</h6>
                     </div>
                     <div class="card-body">
-                        
+
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <span class="control-label my-auto"><b>Filter Status</b></span>&nbsp;&nbsp;&nbsp;
+                                @foreach (\App\StateAssets::where('group_id', env('STATE_MEDIA_ASSET_GROUP'))->get() as $sa)
+                                    <a href="{{ route('media-asset-filtered', [$server->slug, $drive->slug, $asset->id, $sa->id]) }}"  class="btn btn-lg btn-success"><i class="far fa-filter"></i>&nbsp; {{ $sa->asset_name }}</a>&nbsp;&nbsp;
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p>&nbsp;</p>
+                        </div>
+
                         <table class="table">
                             <thead>
                             <tr>
