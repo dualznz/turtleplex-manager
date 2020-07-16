@@ -30,7 +30,7 @@
                         <h6 class="card-subtitle">View media contained within the selected asset folder.</h6>
                     </div>
                     <div class="card-body">
-
+                        
                         <table class="table">
                             <thead>
                             <tr>

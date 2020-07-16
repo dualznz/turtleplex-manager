@@ -28,7 +28,7 @@ class Media extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'server_id', 'drive_id', 'drive_asset_id', 'tmdb_id', 'media_title', 'slug', 'release_year', 'vote_average', 'poster_92_path', 'poster_154_path', 'backdrop_path', 'media_type', 'overview'
+        'id', 'server_id', 'drive_id', 'drive_asset_id', 'state_asset_id', 'tmdb_id', 'media_title', 'slug', 'release_year', 'vote_average', 'poster_92_path', 'poster_154_path', 'backdrop_path', 'media_type', 'overview'
     ];
 
     /**

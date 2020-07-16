@@ -847,11 +847,8 @@ class MediaController extends Controller
                 ->with('type', 'alert-warning');
         }
 
-        $stateAsset = StateAssets::where('server_id', $server->id)
-            ->where('drive_id', $drive->id)
-            ->where('asset_id', $asset->id)
-            ->where('id', $state_asset_id)->first();
-        if (is_null($stateAsset)) {
+        $state_asset = StateAssets::where('id', $state_asset_id)->first();
+        if (is_null($state_asset)) {
             return redirect()->back()
                 ->with('message', 'The media state asset you selected does not exist, or you do not have permissions to view it!')
                 ->with('type', 'alert-warning');
@@ -859,15 +856,16 @@ class MediaController extends Controller
 
         $media = Media::where('server_id', $server->id)
             ->where('drive_id', $drive->id)
-            ->where('drive_asset_id', $asset->id)
-            ->where('state_asset_id', $stateAsset->id)
-            ->orderBy('media_title', 'ASC')->paginate(10);
+            ->where('state_asset_id', $state_asset->id)
+            ->orderBy('media_title', 'ASC')->get();
+
+        ddd($media);
 
         return view('media.asset.filter.filter', [
-            'server'    => $server,
-            'drive'     => $drive,
-            'asset'     => $asset,
-            'media'     => $media
+            'server'        => $server,
+            'drive'         => $drive,
+            'asset'         => $asset,
+            'media'         => $media
         ]);
     }
 }
