@@ -24,7 +24,6 @@ class MediaController extends Controller
         $this->middleware('can:editDriveMedia', ['only' => 'viewMediaStore']);
         $this->middleware('can:moveDriveMedia', ['only' => 'viewMoveStep1', 'storeMoveStep1', 'viewMoveStep2', 'storeMoveStep2', 'viewMoveStep3', 'storeMoveStep3', 'viewMoveStep4', 'storeMoveStep4']);
         $this->middleware('can:removeDriveMedia', ['only' => 'remove', 'removeStore']);
-        $this->middleware('can:searchDriveMedia', ['only' => 'search']);
     }
 
     public function index($server_slug, $drive_slug)
