@@ -856,6 +856,7 @@ class MediaController extends Controller
 
         $media = Media::where('server_id', $server->id)
             ->where('drive_id', $drive->id)
+            ->where('drive_asset_id', $asset->id)
             ->where('state_asset_id', $state_asset->id)
             ->orderBy('media_title', 'ASC')->paginate(10);
 
@@ -864,6 +865,7 @@ class MediaController extends Controller
             'server'        => $server,
             'drive'         => $drive,
             'asset'         => $asset,
+            'stateAsset'    => $state_asset,
             'media'         => $media
         ]);
     }

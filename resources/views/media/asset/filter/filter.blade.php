@@ -32,6 +32,8 @@
                     </div>
                     <div class="card-body">
 
+                        <a href="{{ route('media-asset', [$server->slug, $drive->slug, $asset->id]) }}" class="btn btn-warning"><i class="fas fa-chevron-double-left"></i> Back To {{ $asset->asset_name }}</a>
+
                         <div class="col-md-12">
                             <p>&nbsp;</p>
                         </div>
@@ -47,7 +49,7 @@
                             <tbody>
                             @if (count($media) == 0)
                                 <tr>
-                                    <td colspan="3"><div align="center"><i>There are currently no <b>{{ $asset->asset_name }}</b> available in <b>{{ $drive->drive_name.$asset->asset_folder }}</b> !</i></div></td>
+                                    <td colspan="3"><div align="center"><i>There are currently no <b>{{ $stateAsset->asset_name }}</b> media available in <b>{{ $drive->drive_name.$asset->asset_folder }}</b> !</i></div></td>
                                 </tr>
                             @else
                                 @foreach ($media as $m)
