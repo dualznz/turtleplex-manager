@@ -35,6 +35,13 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
     Route::get('/media-search', ['as' => 'global-media-search', 'uses' => 'MediaSearchController@index']);
 
+    Route::prefix('/settings')->group(function () {
+        Route::get('/', ['as' => 'account-settings', 'uses' => 'AccountController@index']);
+        Route::post('/update', ['as' => 'account-settings-update', 'uses' => 'AccountController@update']);
+        Route::post('/update/password', ['as' => 'account-settings-password', 'uses' => 'AccountController@updatePassword']);
+        Route::post('/remove-account', ['as' => 'account-settings-remove', 'uses' => 'AccountController@removeAccount']);
+    });
+
     // Media Issyes
     Route::prefix('/media-issues')->group(function () {
         Route::get('/', ['as' => 'media-issue', 'uses' => 'MediaIssuesController@index']);
