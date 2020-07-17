@@ -74,6 +74,8 @@
                         </ul>
                     </li>
                 @endcan
+
+                <li><a href="https://trello.com/b/9VNcqB8v/turtle-plex-development" target="_blank"><i class="fab fa-trello"></i> Development Board</a></li>
             </ul>
         </div>
         <!-- End XP Navigationbar -->
