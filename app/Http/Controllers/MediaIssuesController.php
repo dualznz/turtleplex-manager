@@ -28,11 +28,20 @@ class MediaIssuesController extends Controller
 
     public function index()
     {
-        $issues = MediaIssues::orderBy('created_at', 'DESC')->paginate(20);
+        $issues = MediaIssues::where('completed', 0)
+            ->orderBy('id', 'DESC')->paginate(20);
 
         return view('media.issues.index', [
             'issues' => $issues
         ]);
+    }
+
+    public function filter($completed)
+    {
+        $issues = MediaIssues::where('completed', $completed)
+            ->orderBy('id', 'DESC')->paginate(20);
+
+
     }
 
     public function store(Request $request, $server_slug, $drive_slug)
