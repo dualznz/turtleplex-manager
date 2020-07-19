@@ -36,6 +36,7 @@ class RolesSeeder extends Seeder
         $staff->givePermissionTo('editDriveMedia');
         $staff->givePermissionTo('moveDriveMedia');
         $staff->givePermissionTo('removeDriveMedia');
+        $staff->givePermissionTo('manualAddMedia');
 
         // hardware area
         $staff->givePermissionTo('viewHardware');
@@ -74,6 +75,7 @@ class RolesSeeder extends Seeder
         $developer->givePermissionTo('editDriveMedia');
         $developer->givePermissionTo('moveDriveMedia');
         $developer->givePermissionTo('removeDriveMedia');
+        $developer->givePermissionTo('manualAddMedia');
 
         // hardware area
         $developer->givePermissionTo('viewHardware');
