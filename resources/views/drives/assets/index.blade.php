@@ -59,7 +59,7 @@
                                         <td><a href="javascript:void(0);">{{ $asset->asset_name }}</a></td>
                                         <td>{{ $asset->asset_folder }}</td>
                                         <td><span class="badge badge-info">{{ count(\App\Media::where('server_id', $drive->server->id)->where('drive_id', $drive->id)->where('drive_asset_id', $asset->id)->get()) }}</span></td>
-                                        <td>{{ \App\Timezone::getDate($asset->created_at->getTimestamp()) }}</td>
+                                        <td>{{ \App\Helpers\Timezone::getDate($asset->created_at->getTimestamp()) }}</td>
                                         <td>
                                                 <span class="float-right">
                                                     @can('editDriveAsset')

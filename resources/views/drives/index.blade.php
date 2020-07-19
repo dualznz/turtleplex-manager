@@ -77,7 +77,7 @@
                                             <br><small>{{ $drive->server->network_path.$drive->drive_folder }}</small>
                                         </td>
                                         <td><span class="badge badge-info">{{ count(\App\Media::where('server_id', $drive->server->id)->where('drive_id', $drive->id)->get()) }}</span></td>
-                                        <td>{{ \App\Timezone::getDate($drive->created_at->getTimestamp()) }}</td>
+                                        <td>{{ \App\Helpers\Timezone::getDate($drive->created_at->getTimestamp()) }}</td>
                                         <td>
                                                 <span class="float-right">
                                                     @can ('viewDriveAssets')

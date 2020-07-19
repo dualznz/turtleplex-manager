@@ -76,7 +76,7 @@
                                                 {!! $sliced_assets !!}
                                             @endif
                                         </td>
-                                        <td>{{ \App\Timezone::getDate($group->created_at->getTimestamp()) }}</td>
+                                        <td>{{ \App\Helpers\Timezone::getDate($group->created_at->getTimestamp()) }}</td>
                                         <td>
                                             @can ('viewStateAssets')
                                                 <a href="{{ route('state-assets', $group->slug) }}" class="btn btn-round btn-info"><i class="fad fa-books"></i></a>

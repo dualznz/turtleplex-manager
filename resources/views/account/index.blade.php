@@ -65,6 +65,38 @@
                                 </div>
                             </div>
 
+                            <div class="form-group {{ $errors->first('timezone') ? 'has-error' : ''}}">
+                                <div class="row">
+                                    <label class="col-lg-2 control-label label-right my-auto">Timezone</label>
+                                    <div class="col-lg-5">
+                                        <select name="timezone" class="form-control select-timezone">
+                                            @foreach(Timezone::selectTimezones() as $timezone)
+                                                <option value="{{ $timezone['value'] }}" {{ $u->timezone == $timezone['value'] ? 'selected=selected' : '' }}>({{ $timezone['offset'] }}) {{ $timezone['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="help-block margin-bottom-none">
+                                            <small>Please select which timezone you are based in.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group {{ $errors->first('timezone_format') ? 'has-error' : ''}}">
+                                <div class="row">
+                                    <label class="col-lg-2 control-label label-right my-auto">Time Format</label>
+                                    <div class="col-lg-5">
+                                        <select name="timezone_format" class="form-control select-timezone">
+                                            @foreach(Timezone::selectTimeFormat() as $format)
+                                                <option value="{{ $format['value'] }}" {{ $u->time_format == $format['value'] ? 'selected=selected' : '' }}>{{ $format['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="help-block margin-bottom-none">
+                                            <small>Please select which time format you would like to use.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-1 control-label"></div>

@@ -65,7 +65,7 @@
                                         <td>{{ $issue->tmdb_media_type }}</td>
                                         <td><a href="{{ $issue->tmdb_url }}" target="_blank" id="viewTMDBUrl">{{ $issue->tmdb_url }}</a></td>
                                         <td>{!! \App\Helpers\AccentHelper::accent($issue->stateAsset->asset_name, $issue->stateAsset->text_color, $issue->stateAsset->background_color) !!}</td>
-                                        <td>{{ \App\Timezone::getDate($issue->created_at->getTimestamp()) }}</td>
+                                        <td>{{ \App\Helpers\Timezone::getDate($issue->created_at->getTimestamp()) }}</td>
                                         <td>
                                             <span class="float-right">
                                                 @can ('updateMediaIssue')

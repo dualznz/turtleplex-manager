@@ -60,7 +60,7 @@
                                         <td>{{ $server->server_name }}</td>
                                         <td><span class="badge badge-primary">{{ count(\App\Drives::where('server_id', $server->id)->get()) }}</span></td>
                                         <td><span class="badge badge-info">{{ count(\App\Media::where('server_id', $server->id)->get()) }}</span></td>
-                                        <td>{{ \App\Timezone::getDate($server->pinged_at->getTimestamp()) }}</td>
+                                        <td>{{ \App\Helpers\Timezone::getDate($server->pinged_at->getTimestamp()) }}</td>
                                         <td>
                                                 <span class="float-right">
                                                     <a class="btn btn-round btn-info" data-toggle="modal" data-target="#info_model_{{ $server->slug }}" id="viewInfo" style="color: white;"><i class="far fa-eye"></i></a>
