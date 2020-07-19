@@ -62,15 +62,15 @@
                                         <td><span class="badge badge-info">{{ count(\App\Media::where('server_id', $server->id)->get()) }}</span></td>
                                         <td>{{ \App\Helpers\Timezone::getDate($server->pinged_at->getTimestamp()) }}</td>
                                         <td>
-                                                <span class="float-right">
-                                                    <a class="btn btn-round btn-info" data-toggle="modal" data-target="#info_model_{{ $server->slug }}" id="viewInfo" style="color: white;"><i class="far fa-eye"></i></a>
-                                                    @can('editServer')
-                                                        <a href="{{ route('servers-edit', $server->slug) }}" class="btn btn-round btn-primary" id="editServer"><i class="fal fa-edit"></i></a>
-                                                    @endcan
-                                                    @can('removeServer')
-                                                        <a href="{{ route('servers-remove', $server->slug) }}" class="btn btn-round btn-danger" id="removeServer"><i class="far fa-trash-alt"></i></a>
-                                                    @endcan
-                                                </span>
+                                            <span class="float-right">
+                                                <a class="btn btn-round btn-info" data-toggle="modal" data-target="#info_model_{{ $server->slug }}" id="viewInfo" style="color: white;"><i class="far fa-eye"></i></a>
+                                                @can('editServer')
+                                                    <a href="{{ route('servers-edit', $server->slug) }}" class="btn btn-round btn-primary" id="editServer"><i class="fal fa-edit"></i></a>
+                                                @endcan
+                                                @can('removeServer')
+                                                    <a href="{{ route('servers-remove', $server->slug) }}" class="btn btn-round btn-danger" id="removeServer"><i class="far fa-trash-alt"></i></a>
+                                                @endcan
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach

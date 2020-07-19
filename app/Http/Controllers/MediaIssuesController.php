@@ -28,8 +28,7 @@ class MediaIssuesController extends Controller
 
     public function index()
     {
-        $issues = MediaIssues::where('completed', 0)
-            ->orderBy('id', 'DESC')->paginate(20);
+        $issues = MediaIssues::orderBy('id', 'DESC')->limit(10)->get();
 
         return view('media.issues.index', [
             'issues' => $issues
@@ -40,7 +39,7 @@ class MediaIssuesController extends Controller
     {
 
         $issues = MediaIssues::where('state_asset_id', $state_asset_id)
-            ->orderBy('id', 'DESC')->paginate(20);
+            ->orderBy('id', 'DESC')->paginate(10);
 
         $asset = StateAssets::where('id', $state_asset_id)->first();
 
