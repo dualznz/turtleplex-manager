@@ -36,12 +36,18 @@ class MediaIssuesController extends Controller
         ]);
     }
 
-    public function filter($completed)
+    public function filter($state_asset_id)
     {
-        $issues = MediaIssues::where('completed', $completed)
+
+        $issues = MediaIssues::where('state_asset_id', $state_asset_id)
             ->orderBy('id', 'DESC')->paginate(20);
 
+        $asset = StateAssets::where('id', $state_asset_id)->first();
 
+        return view('media.issues.filter.index', [
+            'issues'    => $issues,
+            'asset'     => $asset
+        ]);
     }
 
     public function store(Request $request, $server_slug, $drive_slug)

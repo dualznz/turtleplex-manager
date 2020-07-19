@@ -33,7 +33,7 @@
                             <div class="input-group">
                                 <span class="control-label my-auto"><b>Filter Status</b></span>&nbsp;&nbsp;&nbsp;
                                 @foreach (\App\StateAssets::where('group_id', env('STATE_MEDIA_ISSUES_ASSET_GROUP'))->get() as $sa)
-                                    <a href="{{ route('media-issues-sorting', $sa->id) }}"  class="btn btn-lg btn-success"><i class="far fa-filter"></i>&nbsp; {{ $sa->asset_name }}</b></a>&nbsp;&nbsp;
+                                    <a href="{{ route('media-issues-sorting', [$sa->id]) }}"  class="btn btn-lg btn-success"><i class="far fa-filter"></i>&nbsp; {{ $sa->asset_name }}&nbsp;&nbsp;<b>({{ count(\App\MediaIssues::where('state_asset_id', $sa->id)->get()) }})</b></a>&nbsp;&nbsp;
                                 @endforeach
                             </div>
                         </div>

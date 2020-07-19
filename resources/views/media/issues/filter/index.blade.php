@@ -5,7 +5,7 @@
 @section('rightbar-content')
     <!-- Start XP Breadcrumbbar -->
     <div class="xp-breadcrumbbar text-center">
-        <h4 class="page-title">Submission Issues: {{ $ }}</h4>
+        <h4 class="page-title">Submission Issues:</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">INDEX</a></li>
             <li class="breadcrumb-item active">PAGE</li>
