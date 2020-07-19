@@ -30,6 +30,9 @@
                         <h6 class="card-subtitle">
                             Search for new media in realtime as you type in the search criteria.
                             <div class="pull-right">
+                                @can ('manualAddMedia')
+                                    <a href="javascript:void(0);" class="btn btn-success" data-toggle="modal" data-target="#addMediaById"><i class="far fa-portrait"></i>&nbsp; Search By ID</a>
+                                @endcan
                                 @can ('sendMediaIssue')
                                     <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#sendSubmission"><i class="far fa-paper-plane"></i>&nbsp; Send Submission Issue</a>
                                 @endcan
@@ -107,4 +110,59 @@
         </div>
     </div>
     <!-- End Media Submission Issue -->
+
+    <!-- Start Add Media By ID -->
+    <div class="modal fade" id="addMediaById" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form class="form-horizontal" method="POST" action="">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleLargeModalLabel">Search Media By ID</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+
+                            <div class="form-group {{ $errors->first('tmdb_id') ? 'has-error' : ''}}">
+                                <div class="row">
+                                    <label class="col-lg-3 control-label label-right my-auto">The Movie DB ID</label>
+                                    <div class="col-lg-9">
+                                        <input type="number" class="form-control" name="tmdb_id" value="{{ old('tmdb_id') }}" required="" placeholder="" />
+                                        <div class="help-block margin-bottom-none">
+                                            <small>Visit <a href="https://www.themoviedb.org/" target="_blank">https://www.themoviedb.org</a> and search for the media then copy the id number.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group {{ $errors->first('tmdb_media_type') ? 'has-error' : ''}}">
+                                <div class="row">
+                                    <label class="col-lg-3 control-label label-right my-auto">Tmdb Media Type</label>
+                                    <div class="col-lg-9">
+                                        <div class="i-checks">
+                                            <label> <input type="radio" name="tmdb_media_type" value="" disabled> <i></i>&nbsp;&nbsp;none&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label> <input type="radio" name="tmdb_media_type" value="movie"> <i></i>&nbsp;&nbsp;movie&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label> <input type="radio" name="tmdb_media_type" value="tv"> <i></i>&nbsp;&nbsp;tv&nbsp;&nbsp;</label>
+                                        </div>
+                                        <div class="help-block margin-bottom-none">
+                                            <small>Visit <a href="https://www.themoviedb.org/" target="_blank">https://www.themoviedb.org</a> and search for the media then copy the media type.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Search For Media</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Add Media By ID -->
 @endsection
