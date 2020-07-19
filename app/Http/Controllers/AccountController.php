@@ -22,8 +22,10 @@ class AccountController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'username'  => 'required|string|max:255',
-            'email'     => 'required|string|email|max:255'
+            'username'          => 'required|string|max:255',
+            'email'             => 'required|string|email|max:255',
+            'timezone'          => 'required',
+            'timezone_format'   => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -38,6 +40,8 @@ class AccountController extends Controller
 
         $u->username = $request->username;
         $u->email = $request->email;
+        $u->timezone = $request->timezone;
+        $u->time_format = $request->timezone_format;
         if ($u->isDirty()) $u->save();
 
 

@@ -46,7 +46,7 @@
     <div class="xp-footerbar">
         <footer class="footer">
             <div class="float-right">
-                Developed &amp; maintained by <a href="javascript:void(0);">dualznz</a>&nbsp;&nbsp;&nbsp;&nbsp;Version <b>1.0.0 RC2</b>
+                Developed &amp; maintained by <a href="javascript:void(0);">dualznz</a>&nbsp;&nbsp;&nbsp;&nbsp;Version <b>1.0.0 RC3</b>
             </div>
             <div class="float-left">
                 &copy; {{ date('Y') }} Dualznz. All Rights Reserved.

@@ -5,10 +5,11 @@
 @section('rightbar-content')
     <!-- Start XP Breadcrumbbar -->
     <div class="xp-breadcrumbbar text-center">
-        <h4 class="page-title">Submission Issues</h4>
+        <h4 class="page-title">Submission Issues: {{ $asset->asset_name }}</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active"><i class="fal fa-plug"></i> Submission Issues</li>
+            <li class="breadcrumb-item"><a href="{{ route('media-issue') }}"><i class="fal fa-plug"></i> Submission Issues</a></li>
+            <li class="breadcrumb-item active">{{ $asset->asset_name }}</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->
@@ -24,19 +25,12 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Media Submission Issues</h5>
+                        <h5 class="card-title text-black">Media Issues: {{ $asset->asset_name }}</h5>
                         <h6 class="card-subtitle">Assess media submission issues and manually update them via <a href="https://www.postman.com/" target="_blank">Postman</a>.</h6>
                     </div>
                     <div class="card-body">
 
-                        <div class="col-md-12">
-                            <div class="input-group">
-                                <span class="control-label my-auto"><b>Filter Status</b></span>&nbsp;&nbsp;&nbsp;
-                                @foreach (\App\StateAssets::where('group_id', env('STATE_MEDIA_ISSUES_ASSET_GROUP'))->get() as $sa)
-                                    <a href="{{ route('media-issues-sorting', [$sa->id]) }}"  class="btn btn-lg btn-success"><i class="far fa-filter"></i>&nbsp; {{ $sa->asset_name }}&nbsp;&nbsp;<b>({{ count(\App\MediaIssues::where('state_asset_id', $sa->id)->get()) }})</b></a>&nbsp;&nbsp;
-                                @endforeach
-                            </div>
-                        </div>
+                        <a href="{{ route('media-issue') }}" class="btn btn-primary"><i class="fas fa-chevron-double-left"></i> Back To Issues</a>
 
                         <div class="col-md-12">
                             <p>&nbsp;</p>

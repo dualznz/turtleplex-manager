@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Helpers;
 
 use Carbon\Carbon;
 use DateTimeZone;

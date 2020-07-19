@@ -59,7 +59,7 @@
                                         <td>{{ $asset->id }}</td>
                                         <td><a href="javascript:void(0);">{{ $asset->asset_name }}</a></td>
                                         <td>{!! \App\Helpers\AccentHelper::accent($asset->asset_name, $asset->text_color, $asset->background_color) !!}</td>
-                                        <td>{{ \App\Timezone::getDate($asset->created_at->getTimestamp()) }}</td>
+                                        <td>{{ \App\Helpers\Timezone::getDate($asset->created_at->getTimestamp()) }}</td>
                                         <td>
                                                 <span class="float-right">
                                                     @can('editStateAsset')

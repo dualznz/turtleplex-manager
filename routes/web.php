@@ -45,6 +45,7 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Media Issyes
     Route::prefix('/media-issues')->group(function () {
         Route::get('/', ['as' => 'media-issue', 'uses' => 'MediaIssuesController@index']);
+        Route::get('/filter/{state_asset_id}', ['as' => 'media-issues-sorting', 'uses' => 'MediaIssuesController@filter']);
 
         // Update Issue Manager
         Route::prefix('/updater/{id}')->group(function () {
