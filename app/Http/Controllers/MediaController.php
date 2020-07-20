@@ -869,4 +869,39 @@ class MediaController extends Controller
             'media'         => $media
         ]);
     }
+
+    public function addByMediaId(Request $request, $server_slug, $drive_slug)
+    {
+        $validator = Validator::make($request->all(), [
+            'drive_id'          => 'required|numeric',
+            'server_id'         => 'required|numeric',
+            'tmdb_id'           => 'required|numeric',
+            'tmdb_media_type'   => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->with('message', 'Failed to manually submit media! have you filled in all the required fields ?')
+                ->with('type', 'alert-danger')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $server = Servers::where('slug', $server_slug)->first();
+        if (is_null($server)) {
+            return redirect()->back()
+                ->with('message', 'The server you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+        $drive = Drives::where('slug', $drive_slug)
+            ->where('server_id', $server->id)->first();
+        if (is_null($drive)) {
+            return redirect()->back()
+                ->with('message', 'The drive you selected does not exist, or you do not have permissions to view it!')
+                ->with('type', 'alert-warning');
+        }
+
+
+    }
 }
