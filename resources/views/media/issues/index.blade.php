@@ -82,12 +82,6 @@
                             </tbody>
                         </table>
 
-                        <div class="col-lg-12">&nbsp;</div>
-
-                        <div style="margin: 0 auto;">
-                            {{ $issues->links() }}
-                        </div>
-
                     </div>
                 </div>
                 <!-- End Card -->

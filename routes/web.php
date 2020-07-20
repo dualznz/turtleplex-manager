@@ -70,6 +70,9 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
             Route::get('/', ['as' => 'media-add', 'uses' => 'MediaController@add']);
             Route::get('/{tmdb_media_type}/{tmdb_id}', ['as' => 'media-add-insert', 'uses' => 'MediaController@insertMedia']);
             Route::post('/store', ['as' => 'media-store', 'uses' => 'MediaController@store']);
+
+            // Add Media By ID
+            Route::post('/add/tmdb', ['as' => 'media-add-by-id', 'uses' => 'MediaController@addByMediaId']);
         });
 
         // Issue Adding Media

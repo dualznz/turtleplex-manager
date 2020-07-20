@@ -78,7 +78,7 @@
 
                         <div class="col-lg-12">&nbsp;</div>
 
-                        <div style="margin: 0 auto;">
+                        <div style="display: flex; justify-content: center; align-content: center;">
                             {{ $issues->links() }}
                         </div>
 

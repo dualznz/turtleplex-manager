@@ -50,7 +50,7 @@
                                     <td>{{ $r->id }}</td>
                                     <td style="color: {{ $r->color }}">{{ $r->name }}</td>
                                     <td>{{ number_format(\App\User::role($r->name)->count(), 0) }}</td>
-                                    <td>{{ \App\Timezone::getDate($r->created_at->getTimestamp()) }}</td>
+                                    <td>{{ \App\Helpers\Timezone::getDate($r->created_at->getTimestamp()) }}</td>
                                     <td><a href="{{ route('developer-permissions-roles-edit', $r->id) }}" class="btn btn-round btn-info"><i class="far fa-pencil"></i></a></td>
                                 </tr>
                             @endforeach
@@ -80,7 +80,7 @@
                                     <td>{{ $c->id }}</td>
                                     <td>{{ $c->name }}</td>
                                     <td>{{ number_format($c->countPermissions(), 0) }}</td>
-                                    <td>{{ \App\Timezone::getDate($c->created_at->getTimestamp()) }}</td>
+                                    <td>{{ \App\Helpers\Timezone::getDate($c->created_at->getTimestamp()) }}</td>
                                     <td><a href="{{ route('developer-permissions-categories-edit', $c->id) }}" class="btn btn-round btn-info"><i class="far fa-pencil"></i></a></td>
                                 </tr>
                             @endforeach
@@ -110,7 +110,7 @@
                                     <td>{{ $p->id }}</td>
                                     <td>{{ $p->name }}</td>
                                     <td>{{ !is_null($p->category_id) ? App\PermissionCategories::find($p->category_id)->name : 'None' }}</td>
-                                    <td>{{ \App\Timezone::getDate($p->created_at->getTimestamp()) }}</td>
+                                    <td>{{ \App\Helpers\Timezone::getDate($p->created_at->getTimestamp()) }}</td>
                                     <td><a href="{{ route('developer-permissions-permissions-edit', $p->id) }}" class="btn btn-round btn-info"><i class="far fa-pencil"></i></a></td>
                                 </tr>
                             @endforeach

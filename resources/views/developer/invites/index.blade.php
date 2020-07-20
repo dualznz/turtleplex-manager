@@ -65,7 +65,7 @@
                                             {{ $i->claimed->username }}
                                         @endif
                                     </td>
-                                    <td>{{ \App\Timezone::getDate($i->created_at->getTimestamp()) }}</td>
+                                    <td>{{ \App\Helpers\Timezone::getDate($i->created_at->getTimestamp()) }}</td>
                                     <td>
                                         @if (!is_null($i->claimed_by))
                                             <a class="btn btn-round btn-danger" role="button" href="javascript:void(0);" disabled><i class="far fa-trash"></i></a>

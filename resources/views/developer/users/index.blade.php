@@ -47,8 +47,8 @@
                                     <td>{{ $u->id }}</td>
                                     <td><a href="javascript:void(0);">{{ $u->username }}</a></td>
                                     <td>{{ $u->roles()->pluck('name')[0] }}</td>
-                                    <td>{{ \App\Timezone::getDate($u->created_at->getTimestamp()) }}</td>
-                                    <td>{{ \App\Timezone::getDate($u->updated_at->getTimestamp()) }}</td>
+                                    <td>{{ \App\Helpers\Timezone::getDate($u->created_at->getTimestamp()) }}</td>
+                                    <td>{{ \App\Helpers\Timezone::getDate($u->updated_at->getTimestamp()) }}</td>
                                     <td>
                                         <div class="pull-right">
                                             <a href="{{ route('developer-users-edit', $u->id) }}" class="btn btn-round btn-info"><i class="far fa-pencil"></i></a>

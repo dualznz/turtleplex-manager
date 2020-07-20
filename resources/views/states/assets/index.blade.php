@@ -61,14 +61,14 @@
                                         <td>{!! \App\Helpers\AccentHelper::accent($asset->asset_name, $asset->text_color, $asset->background_color) !!}</td>
                                         <td>{{ \App\Helpers\Timezone::getDate($asset->created_at->getTimestamp()) }}</td>
                                         <td>
-                                                <span class="float-right">
-                                                    @can('editStateAsset')
+                                            <span class="float-right">
+                                                @can('editStateAsset')
                                                         &nbsp;&nbsp;<a href="javascript:void(0);" data-toggle="modal" data-target="#editStateAsset_{{ $asset->id }}" class="btn btn-round btn-primary"><i class="fal fa-edit"></i></a>
                                                     @endcan
                                                     @can('removeStateAsset')
                                                         <a href="{{ route('state-assets-remove', [$group->slug, $asset->id]) }}" class="btn btn-round btn-danger"><i class="far fa-trash-alt"></i></a>
                                                     @endcan
-                                                </span>
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach
