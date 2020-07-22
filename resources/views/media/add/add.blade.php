@@ -114,7 +114,7 @@
     <!-- Start Add Media By ID -->
     <div class="modal fade" id="addMediaById" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <form class="form-horizontal" method="POST" action="">
+            <form class="form-horizontal" method="POST" action="{{ route('media-add-by-id', [$server->slug, $drive->slug]) }}">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -159,6 +159,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Search For Media</button>
+                        <input type="hidden" name="server_id" value="{{ $server->id }}">
+                        <input type="hidden" name="drive_id" value="{{ $drive->id }}">
                     </div>
                 </div>
             </form>
