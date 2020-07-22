@@ -143,7 +143,7 @@
                                     <label class="col-lg-3 control-label label-right my-auto">Media Folder</label>
                                     <div class="col-lg-8">
                                         <select class="form-control" name="drive_assets" id="drive_assets" required>
-                                            @foreach (\App\DriveAssets::where('server_id', $server->id)->where('drive_id', $drive->id)->get() as $a)
+                                            @foreach (\App\DriveAssets::where('server_id', $server->id)->where('drive_id', $drive->id)->orderBy('asset_name', 'ASC')->get() as $a)
                                                 <option value="{{ $a->id }}" {{ $a->id == $media->asset->id ? 'selected' : '' }}>{{ $a->asset_name }}</option>
                                             @endforeach
                                         </select>
