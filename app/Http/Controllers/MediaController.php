@@ -902,6 +902,92 @@ class MediaController extends Controller
                 ->with('type', 'alert-warning');
         }
 
+        $stream = [];
+        if ($request->tmdb_media_type == 'movie') {
+            $stream = Http::withToken(config('services.tmdb.token'))
+                ->get(config('services.tmdb.domain').'movie/'.$request->tmdb_id)
+                ->json();
+        } elseif ($request->tmdb_media_type == 'tv') {
+            $stream = Http::withToken(config('services.tmdb.token'))
+                ->get(config('services.tmdb.domain').'tv/'.$request->tmdb_id)
+                ->json();
+        }
 
+        $tmdb_id = $stream['id'];
+        $media_title = '';
+        $release_year = null;
+        $vote_average = '';
+        $poster_92_path = '';
+        $poster_154_path = '';
+        $backdrop_path = '';
+        $overview = '';
+        $media_icon = '';
+        $media_type = $request->tmdb_media_type;
+
+        switch ($request->tmdb_media_type) {
+            case 'movie':
+                $media_title = $stream['title'];
+                $release_year = substr($stream['release_date'], 0, strpos($stream['release_date'], '-'));
+                $vote_average = $stream['vote_average'];
+                $poster_92_path = 'https://image.tmdb.org/t/p/w92'.$stream['poster_path'];
+                $poster_154_path = 'https://image.tmdb.org/t/p/w154'.$stream['poster_path'];
+                $backdrop_path = 'https://image.tmdb.org/t/p/original/'.$stream['backdrop_path'];
+                $overview = $stream['overview'];
+                $media_icon = 'fas fa-camera-movie';
+                break;
+            case 'tv':
+                $media_title = $stream['name'];
+                $release_year = substr($stream['first_air_date'], 0, strpos($stream['first_air_date'], '-'));
+                $vote_average = $stream['vote_average'];
+                $poster_92_path = 'https://image.tmdb.org/t/p/w92'.$stream['poster_path'];
+                $poster_154_path = 'https://image.tmdb.org/t/p/w154'.$stream['poster_path'];
+                $backdrop_path = 'https://image.tmdb.org/t/p/original/'.$stream['backdrop_path'];
+                $overview = $stream['overview'];
+                $media_icon = 'fas fa-tv-retro';
+                break;
+        }
+
+        $data = [
+            'id'                => $tmdb_id,
+            'media_type'        => $media_type,
+            'media_title'       => $media_title,
+            'release_year'      => $release_year,
+            'vote_average'      => $vote_average,
+            'poster_92_path'    => $poster_92_path,
+            'poster_154_path'   => $poster_154_path,
+            'backdrop_path'     => $backdrop_path,
+            'overview'          => $overview,
+            'media_icon'        => $media_icon,
+            'server_id'         => $server->id,
+            'drive_id'          => $drive->id,
+        ];
+
+        return redirect()->route('media-add-by-id-results', [$server->slug, $drive->slug])->withCookie(cookie('TMDBMediaResults', json_encode($data), 1440));
+    }
+
+    public function addByMediaIdResults($server_slug, $drive_slug)
+    {
+        if ($r = json_decode(Cookie::get('TMDBMediaResults'))) {
+            $server = Servers::where('slug', $server_slug)->first();
+            if (is_null($server)) {
+                return redirect()->back()
+                    ->with('message', 'The server you selected does not exist, or you do not have permissions to view it!')
+                    ->with('type', 'alert-warning');
+            }
+
+            $drive = Drives::where('slug', $drive_slug)
+                ->where('server_id', $server->id)->first();
+            if (is_null($drive)) {
+                return redirect()->back()
+                    ->with('message', 'The drive you selected does not exist, or you do not have permissions to view it!')
+                    ->with('type', 'alert-warning');
+            }
+
+            return view('media.search.by-id', [
+               'result'        => $r,
+               'server'         => $server,
+               'drive'          => $drive
+            ]);
+        }
     }
 }
