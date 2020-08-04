@@ -69,9 +69,9 @@ class Servers extends Model
     {
         $st = '';
         if ($this->ping_status == 1) {
-            $st = '<i class="far fa-ethernet" style="font-size: 20px; color: #5DFF00;" title="Server Online"></i>&nbsp;&nbsp;&nbsp;<b>Online</b> | <b>Last Checked:</b> ' .  \App\Timezone::getDate($this->pinged_at->getTimestamp());
+            $st = '<i class="far fa-ethernet" style="font-size: 20px; color: #5DFF00;" title="Server Online"></i>&nbsp;&nbsp;&nbsp;<b>Online</b> | <b>Last Checked:</b> ' .  \App\Helpers\Timezone::getDate($this->pinged_at->getTimestamp());
         } else {
-            $st = '<i class="far fa-ethernet" style="font-size: 20px; color: #FF0000;" title="Server Offline"></i>&nbsp;&nbsp;&nbsp;<b>Offline</b> | <b>Last Checked:</b> ' .  \App\Timezone::getDate($this->pinged_at->getTimestamp());
+            $st = '<i class="far fa-ethernet" style="font-size: 20px; color: #FF0000;" title="Server Offline"></i>&nbsp;&nbsp;&nbsp;<b>Offline</b> | <b>Last Checked:</b> ' .  \App\Helpers\Timezone::getDate($this->pinged_at->getTimestamp());
         }
         return $st;
     }
