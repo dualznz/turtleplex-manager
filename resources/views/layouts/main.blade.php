@@ -14,8 +14,7 @@
         <link href="/static/assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="/static/assets/css/app.css?v={{ hash_file('crc32b', public_path().'/static/assets/css/app.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-IIED/eyOkM6ihtOiQsX2zizxFBphgnv1zbe1bKA+njdFzkr6cDNy16jfIKWu4FNH" crossorigin="anonymous">
-        <link href="/static/assets/plugins/colorpicker/bootstrap-colorpicker.css" type="text/css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-VhBcF/php0Z/P5ZxlxaEx1GwqTQVIBu4G4giRWxTKOCjTxsPFETUDdVL5B6vYvOt" crossorigin="anonymous">
         <livewire:styles>
         @stack('css')
         <!-- End CSS -->
