@@ -364,15 +364,7 @@ class MediaController extends Controller
                 ->where('server_id', $old_server->id)->first();
             if (is_null($old_drive)) {
                 return redirect()->route('media-move-step1', [$server_slug, $drive_slug, $media_type ,$slug, $release_year])
-                    ->with('message', 'The drive you selected does not exist, or you do not have permissions to view it!')
-                    ->with('type', 'alert-warning');
-            }
-
-            $new_drive = Drives::where('slug', $m->drive_slug)
-                ->where('server_id', $new_server->id)->first();
-            if (is_null($new_drive)) {
-                return redirect()->route('media-move-step1', [$server_slug, $drive_slug, $media_type ,$slug, $release_year])
-                    ->with('message', 'The drive you selected does not exist, or you do not have permissions to view it!')
+                    ->with('message', 'The source drive you selected does not exist, or you do not have permissions to view it!')
                     ->with('type', 'alert-warning');
             }
 
@@ -390,7 +382,6 @@ class MediaController extends Controller
                 'server'        => $old_server,
                 'new_server'    => $new_server,
                 'drive'         => $old_drive,
-                'new_drive'     => $new_drive,
                 'media'         => $media,
                 'media_type'    => $m->media_type
             ]);
