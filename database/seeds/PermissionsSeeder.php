@@ -54,6 +54,7 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'moveDriveMedia', 'category_id' => $media->id, 'description' => 'Move existing drive media to another location']);
         Permission::create(['name' => 'removeDriveMedia', 'category_id' => $media->id, 'description' => 'Remove existing drive media']);
         Permission::create(['name' => 'manualAddMedia', 'category_id' => $media->id, 'description' => 'Manually search / add media by TMDB id']);
+        Permission::create(['name' => 'viewDriveMediaImporter', 'category_id' => $media->id, 'description' => 'View drive media importer area']);
 
         /*
          * Hardware Permissions

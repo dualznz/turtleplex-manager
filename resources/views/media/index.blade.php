@@ -29,6 +29,7 @@
                         <h6 class="card-subtitle">
                             View / add media to selected drive which allows for backups of all media location in-case of a hard drive failure.
                             <div class="pull-right">
+                                @can ('viewDriveMediaImporter')<a href="{{ route('media-importer', [$server->slug, $drive->slug]) }}" class="btn btn-success"><i class="far fa-file-import"></i> Media Importer</a>@endcan
                                 <a href="{{ route('media-add', [$server->slug, $drive->slug]) }}" class="btn btn-primary"><i class="far fa-plus"></i> Add New Media</a>
                             </div>
                         </h6>

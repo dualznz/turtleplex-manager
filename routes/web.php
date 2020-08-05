@@ -85,6 +85,13 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
             Route::post('/store', ['as' => 'media-issue-store', 'uses' => 'MediaIssuesController@store']);
         });
 
+        // Media Importer
+        Route::prefix('/importer')->group(function () {
+            Route::get('/', ['as' => 'media-importer', 'uses' => 'ImportMediaController@index']);
+            Route::get('/uploader', ['as' => 'media-importer-uploader', 'uses' => 'ImportMediaController@viewUploader']);
+            Route::post('/uploader', ['as' => 'media-importer-uploader-store', 'uses' => 'ImportMediaController@storeUploader']);
+        });
+
         // View Media
         Route::prefix('/view/{media_type}/{slug}.{release_year}')->group(function () {
             Route::get('/', ['as' => 'media-view', 'uses' => 'MediaController@viewMedia']);

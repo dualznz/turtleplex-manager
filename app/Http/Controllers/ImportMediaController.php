@@ -6,15 +6,33 @@ use Illuminate\Http\Request;
 
 class ImportMediaController extends Controller
 {
+    /*
+     * Permissions constructor
+     */
+    public function __construct()
+    {
+        $this->middleware('can:viewDriveMediaImporter', ['only' => 'index']);
+    }
+
+    // tester
     public function import()
     {
         $output = [];
-        $p = '';
         foreach(file(public_path('im.txt')) as $line) {
-            $p = preg_replace( '/\r|\n/', '', $line);
-            $p =  preg_replace('/(19|20)[0-9][0-9]/', '', $line);
-            array_push($output, preg_replace( '/\r|\n/', '', $p));
+            $a = str_replace(array('(', ')'), '', $line);
+            $b = preg_replace( '/\r|\n/', '', $a);
+            $c = preg_replace('/(19|20)[0-9][0-9]/', '', $b);
+            $d = mb_substr($c, 0, -1);
+            if ($d != null) {
+                // if string is not empty push it to array
+                array_push($output, preg_replace( '/\r|\n/', '', $d));
+            }
         }
         ddd($output);
+    }
+
+    public function index($server_slug, $drive_slug)
+    {
+
     }
 }
