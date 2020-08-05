@@ -34,4 +34,9 @@ return [
         'domain' => env('TMDB_API_DOMAIN'),
         'token' => env('TMDB_TOKEN'),
     ],
+
+    'ombi' => [
+      'domain' => env('OMBI_API_DOMAIN'),
+      'key' => env('OMBI_APIKEY'),
+    ],
 ];

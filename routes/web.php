@@ -29,6 +29,7 @@ Route::prefix('/invite')->group(function () {
 
 // Testing
 Route::get('tmdb', ['as' => 'tmdb', 'uses' => 'TmdbController@index']);
+Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getIssues']);
 
 Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard
@@ -169,6 +170,11 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
             Route::post('/update/{id}', ['as' => 'developer-users-update', 'uses' => 'Developer\UsersController@update']);
             Route::post('/update/{id}/password', ['as' => 'developer-users-update-password', 'uses' => 'Developer\UpdatePasswordController@store']);
             Route::post('/destroy/{id}', ['as' => 'developer-users-destroy', 'uses' => 'Developer\UsersController@destroy']);
+        });
+
+        // Ombi Users
+        Route::prefix('/ombi-users')->group(function () {
+            Route::get('/', ['as' => 'ombi-users', 'uses' => 'Ombi\OmbiUsersController@index']);
         });
 
         // Permission groups
