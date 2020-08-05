@@ -28,8 +28,9 @@ Route::prefix('/invite')->group(function () {
 });
 
 // Testing
-Route::get('tmdb', ['as' => 'tmdb', 'uses' => 'TmdbController@index']);
+Route::get('/tmdb', ['as' => 'tmdb', 'uses' => 'TmdbController@index']);
 Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getIssues']);
+Route::get('/import-media', ['media-import', 'uses' => 'ImportMediaController@import']);
 
 Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard
