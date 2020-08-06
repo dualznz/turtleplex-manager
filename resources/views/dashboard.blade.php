@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="xp-widget-box">
                         <div class="float-left">
-                            <h4 class="xp-counter text-primary">{{ count($media) }}</h4>
+                            <h4 class="xp-counter text-primary">{{ number_format(\App\Media::orderBy('id', 'ASC')->count(), 0) }}</h4>
                             <p class="mb-0 text-muted">Total Added Media</p>
                         </div>
                         <div class="float-right">
