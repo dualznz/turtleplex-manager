@@ -331,11 +331,17 @@ class MediaIssuesController extends Controller
                 ->with('type', 'alert-warning');
         }
 
+        $str1 = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567891011121314151617181920212223242526';
+
+        $shuffled1 = str_shuffle($str1);
+        $shuffled1 = substr($shuffled1,1,24);
+
         $media = new Media();
         $media->server_id = $server->id;
         $media->drive_id = $drive->id;
         $media->drive_asset_id = $asset->id;
         $media->state_asset_id = $stateAsset->id;
+        $media->hash_id = $shuffled1;
         $media->tmdb_id = $request->tmdb_id;
         $media->media_title = $request->media_title;
         $media->release_year = $request->release_year;
