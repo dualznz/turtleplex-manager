@@ -90,6 +90,10 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
             Route::get('/', ['as' => 'media-importer', 'uses' => 'ImportMediaController@index']);
             Route::get('/uploader', ['as' => 'media-importer-uploader', 'uses' => 'ImportMediaController@viewUploader']);
             Route::post('/uploader', ['as' => 'media-importer-uploader-store', 'uses' => 'ImportMediaController@storeUploader']);
+            Route::get('/search/{tmdb_media_type}/{hash_id}', ['as' => 'media-importer-search', 'uses' => 'ImportMediaController@search']);
+            Route::get('/insert/{tmdb_media_type}/{tmdb_id}/{hash_id}', ['as' => 'media-importer-insert', 'uses' => 'ImportMediaController@viewInsert']);
+            Route::post('/store', ['as' => 'media-importer-insert-store', 'uses' => 'ImportMediaController@storeInsert']);
+            Route::get('/remove/{hash_id}', ['as' => 'media-importer-remove', 'uses' => 'ImportMediaController@remove']);
         });
 
         // View Media

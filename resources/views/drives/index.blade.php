@@ -25,17 +25,17 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Hard Drives</h5>
-                        <h6 class="card-subtitle">Hard drives that are attached to servers which allows media to be added to them via assets.</h6>
-                    </div>
-                    <div class="card-body">
-
-                        <div class="float-right">
+                        <div class="pull-left">
+                            <h5 class="card-title text-black">Hard Drives</h5>
+                            <h6 class="card-subtitle">Hard drives that are attached to servers which allows media to be added to them via assets.</h6>
+                        </div>
+                        <div class="pull-right">
                             @can('addServer')
                                 <a href="{{ route('drives-add') }}" class="btn btn-primary"><i class="far fa-plus"></i> Add Hard Drive</a>
-                                <p>&nbsp;</p>
                             @endcan
                         </div>
+                    </div>
+                    <div class="card-body">
 
                         <table class="table">
                             <thead>

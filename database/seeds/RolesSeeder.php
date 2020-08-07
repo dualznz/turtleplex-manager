@@ -80,6 +80,7 @@ class RolesSeeder extends Seeder
         $developer->givePermissionTo('uploadDriveMediaImporter');
         $developer->givePermissionTo('searchImportedMedia');
         $developer->givePermissionTo('removeImportedMedia');
+        $developer->givePermissionTo('addImportedMediaResult');
 
         // hardware area
         $developer->givePermissionTo('viewHardware');

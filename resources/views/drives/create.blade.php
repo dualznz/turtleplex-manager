@@ -31,7 +31,6 @@
                     </div>
                     <div class="card-body">
 
-
                         <form class="form-horizontal" method="POST" action="{{ route('drives-store') }}">
                             @csrf
 

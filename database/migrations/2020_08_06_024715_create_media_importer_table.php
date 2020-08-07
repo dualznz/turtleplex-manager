@@ -15,6 +15,7 @@ class CreateMediaImporterTable extends Migration
     {
         Schema::create('media_importer', function (Blueprint $table) {
             $table->id();
+            $table->string('hash_id');
             $table->integer('server_id');
             $table->integer('drive_id');
             $table->integer('drive_asset_id');

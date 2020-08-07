@@ -25,17 +25,17 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Servers</h5>
-                        <h6 class="card-subtitle">Add / view servers that have been added to the management portal.</h6>
-                    </div>
-                    <div class="card-body">
-
-                        <div class="float-right">
+                        <div class="pull-left">
+                            <h5 class="card-title text-black">Servers</h5>
+                            <h6 class="card-subtitle">Add / view servers that have been added to the management portal.</h6>
+                        </div>
+                        <div class="pull-right">
                             @can('addServer')
                                 <a href="{{ route('servers-add') }}" class="btn btn-primary"><i class="far fa-plus"></i> Add Server</a>
-                                <p>&nbsp;</p>
                             @endcan
                         </div>
+                    </div>
+                    <div class="card-body">
 
                         <table class="table">
                             <thead>

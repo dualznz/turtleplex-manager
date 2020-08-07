@@ -25,14 +25,16 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Media: {{ $drive->drive_name }} &nbsp;&nbsp;&nbsp;<small class="text-green"><i class="fa fa-folder-open"></i> {{ $drive->server->network_path.$drive->drive_folder }}</small></h5>
-                        <h6 class="card-subtitle">
-                            View / add media to selected drive which allows for backups of all media location in-case of a hard drive failure.
-                            <div class="pull-right">
-                                @can ('viewDriveMediaImporter')<a href="{{ route('media-importer', [$server->slug, $drive->slug]) }}" class="btn btn-success"><i class="far fa-file-import"></i> Media Importer</a>@endcan
-                                <a href="{{ route('media-add', [$server->slug, $drive->slug]) }}" class="btn btn-primary"><i class="far fa-plus"></i> Add New Media</a>
-                            </div>
-                        </h6>
+                        <div class="pull-left">
+                            <h5 class="card-title text-black">Media: {{ $drive->drive_name }} &nbsp;&nbsp;&nbsp;<small class="text-green"><i class="fa fa-folder-open"></i> {{ $drive->server->network_path.$drive->drive_folder }}</small></h5>
+                            <h6 class="card-subtitle">
+                                View / add media to selected drive which allows for backups of all media location in-case of a hard drive failure.
+                            </h6>
+                        </div>
+                        <div class="pull-right">
+                            @can ('viewDriveMediaImporter')<a href="{{ route('media-importer', [$server->slug, $drive->slug]) }}" class="btn btn-success"><i class="far fa-file-import"></i> Media Importer</a>@endcan
+                            <a href="{{ route('media-add', [$server->slug, $drive->slug]) }}" class="btn btn-primary"><i class="far fa-plus"></i> Add New Media</a>
+                        </div>
                     </div>
                     <div class="card-body">
 

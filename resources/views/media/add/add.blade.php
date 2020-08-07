@@ -26,18 +26,20 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Add Media &nbsp;&nbsp;&nbsp;<small class="text-green"><i class="fa fa-folder-open"></i> {{ $drive->server->network_path.$drive->drive_folder }}</small></h5>
-                        <h6 class="card-subtitle">
-                            Search for new media in realtime as you type in the search criteria.
-                            <div class="pull-right">
-                                @can ('manualAddMedia')
-                                    <a href="javascript:void(0);" class="btn btn-success" data-toggle="modal" data-target="#addMediaById"><i class="far fa-portrait"></i>&nbsp; Search By ID</a>
-                                @endcan
-                                @can ('sendMediaIssue')
-                                    <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#sendSubmission"><i class="far fa-paper-plane"></i>&nbsp; Send Submission Issue</a>
-                                @endcan
-                            </div>
-                        </h6>
+                        <div class="pull-left">
+                            <h5 class="card-title text-black">Add Media &nbsp;&nbsp;&nbsp;<small class="text-green"><i class="fa fa-folder-open"></i> {{ $drive->server->network_path.$drive->drive_folder }}</small></h5>
+                            <h6 class="card-subtitle">
+                                Search for new media in realtime as you type in the search criteria.
+                            </h6>
+                        </div>
+                        <div class="pull-right">
+                            @can ('manualAddMedia')
+                                <a href="javascript:void(0);" class="btn btn-success" data-toggle="modal" data-target="#addMediaById"><i class="far fa-portrait"></i>&nbsp; Search By ID</a>
+                            @endcan
+                            @can ('sendMediaIssue')
+                                <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#sendSubmission"><i class="far fa-paper-plane"></i>&nbsp; Send Submission Issue</a>
+                            @endcan
+                        </div>
                     </div>
                     <div class="card-body">
 

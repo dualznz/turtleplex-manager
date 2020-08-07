@@ -26,17 +26,17 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Assets: {{ $group->group_name }}</h5>
-                        <h6 class="card-subtitle">View / add assets to the selected state group which will contain the color spectrum and scopes within the media group.</h6>
-                    </div>
-                    <div class="card-body">
-
-                        <div class="float-right">
+                        <div class="pull-left">
+                            <h5 class="card-title text-black">Assets: {{ $group->group_name }}</h5>
+                            <h6 class="card-subtitle">View / add assets to the selected state group which will contain the color spectrum and scopes within the media group.</h6>
+                        </div>
+                        <div class="pull-right">
                             @can('addStateAsset')
                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#addStateAsset" class="btn btn-primary"><i class="far fa-plus"></i> Add Asset</a>
-                                <p>&nbsp;</p>
                             @endcan
                         </div>
+                    </div>
+                    <div class="card-body">
 
                         <table class="table">
                             <thead>
