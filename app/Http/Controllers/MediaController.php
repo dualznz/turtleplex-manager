@@ -987,27 +987,4 @@ class MediaController extends Controller
             ]);
         }
     }
-
-    public function updateMediaHashJob()
-    {
-        $count = 0;
-
-        $m = Media::orderBy('id', 'ASC')->get();
-        foreach ($m as $i) {
-            if ($i->hash_id == '') {
-                $str1 = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567891011121314151617181920212223242526';
-
-                $shuffled1 = str_shuffle($str1);
-                $shuffled1 = substr($shuffled1,1,24);
-
-                $s = Media::where('id', $i->id)->first();
-                $s->hash_id = $shuffled1;
-                $s->save();
-
-                $count++;
-            }
-        }
-
-        ddd('A total of '.$count.' records have been updated');
-    }
 }
