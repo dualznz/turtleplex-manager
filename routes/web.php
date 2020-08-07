@@ -28,9 +28,10 @@ Route::prefix('/invite')->group(function () {
 });
 
 // Testing
-Route::get('/tmdb', ['as' => 'tmdb', 'uses' => 'TmdbController@index']);
-Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getIssues']);
-Route::get('/import-media', ['media-import', 'uses' => 'ImportMediaController@import']);
+//Route::get('/tmdb', ['as' => 'tmdb', 'uses' => 'TmdbController@index']);
+//Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getIssues']);
+//Route::get('/import-media', ['as' => 'media-import', 'uses' => 'ImportMediaController@import']);
+Route::get('/update/media/hash', ['uses' => 'MediaController@updateMediaHashJob']);
 
 Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard

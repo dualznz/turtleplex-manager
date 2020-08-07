@@ -321,12 +321,17 @@ class ImportMediaController extends Controller
                 ->with('type', 'alert-warning');
         }
 
+        $str1 = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567891011121314151617181920212223242526';
+
+        $shuffled1 = str_shuffle($str1);
+        $shuffled1 = substr($shuffled1,1,24);
 
         $s = new Media();
         $s->server_id = $server->id;
         $s->drive_id = $drive->id;
         $s->drive_asset_id = $request->drive_assets;
         $s->state_asset_id = $request->media_state;
+        $s->hash_id = $shuffled1;
         $s->tmdb_id = $request->tmdb_id;
         $s->media_title = $request->media_title;
         $s->release_year = $request->release_year;
