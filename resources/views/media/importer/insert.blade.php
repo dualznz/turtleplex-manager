@@ -10,8 +10,8 @@
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><i class="fal fa-photo-video"></i> Media</li>
             <li class="breadcrumb-item "><a href="{{ route('media', [$server->slug, $drive->slug]) }}"><i class="fal fa-tv-retro"></i> {{ $drive->drive_name }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('media-add', [$server->slug, $drive->slug]) }}"></a><i class="far fa-plus"></i> Add Media</li>
-            <li class="breadcrumb-item active">{{ $media_type == 'movie' ? $stream['title'] : $stream['name'] }} ({{ $media_type == 'movie' ? substr($stream['release_date'], 0, strpos($stream['release_date'], '-')) : substr($stream['first_air_date'], 0, strpos($stream['first_air_date'], '-'))}})</li>
+            <li class="breadcrumb-item"><a href="{{ route('media-importer', [$server->slug, $drive->slug]) }}">Media Importer</a></li>
+            <li class="breadcrumb-item active">Add Media: {{ $media_type == 'movie' ? $stream['title'] : $stream['name'] }} ({{ $media_type == 'movie' ? substr($stream['release_date'], 0, strpos($stream['release_date'], '-')) : substr($stream['first_air_date'], 0, strpos($stream['first_air_date'], '-'))}})</li>
         </ol>
     </div>
     <!-- End XP Breadcrumbbar -->
@@ -68,7 +68,7 @@
                         }
                         ?>
 
-                        <form class="form-horizontal" method="POST" action="{{ route('media-store', [$server->id, $drive->id, $media_type, $stream['id']]) }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('media-importer-insert-store', [$server->id, $drive->id, $media_type, $stream['id']]) }}">
                             @csrf
 
                             <div class="jumbotron" style="background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ $backdrop_path }}'); background-size: cover; background-repeat: no-repeat; color: black;">
@@ -128,7 +128,7 @@
                                 <div class="row">
                                     <div class="col-md-1 control-label"></div>
                                     <div class="col-lg-5">
-                                        <a class="btn btn-warning" href="{{ route('media', [$server->slug, $drive->slug]) }}">Cancel</a> &nbsp;
+                                        <a class="btn btn-warning" href="{{ route('media-importer-insert-store', [$server->slug, $drive->slug]) }}">Cancel</a> &nbsp;
                                         <button class="btn btn-primary" type="submit">Add Media</button>
                                         <input type="hidden" name="tmdb_id" value="{{ $tmdb_id }}">
                                         <input type="hidden" name="media_type" value="{{ $media_type }}">
@@ -141,6 +141,7 @@
                                         <input type="hidden" name="overview" value="{{ $overview }}">
                                         <input type="hidden" name="server_id" value="{{ $server->id }}">
                                         <input type="hidden" name="drive_id" value="{{ $drive->id }}">
+                                        <input type="hidden" name="hash_id" value="{{ $search->hash_id }}">
                                     </div>
                                 </div>
                             </div>

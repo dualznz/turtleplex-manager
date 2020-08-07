@@ -26,17 +26,17 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Drive Assets &nbsp;&nbsp;&nbsp;<small class="text-green"><i class="fa fa-folder-open"></i> {{ $drive->server->network_path.$drive->drive_folder }}</small></h5>
-                        <h6 class="card-subtitle">View / add asset folder(s) to the selected drive, which can then be used to add media into.</h6>
-                    </div>
-                    <div class="card-body">
-
-                        <div class="float-right">
+                        <div class="pull-left">
+                            <h5 class="card-title text-black">Drive Assets &nbsp;&nbsp;&nbsp;<small class="text-green"><i class="fa fa-folder-open"></i> {{ $drive->server->network_path.$drive->drive_folder }}</small></h5>
+                            <h6 class="card-subtitle">View / add asset folder(s) to the selected drive, which can then be used to add media into.</h6>
+                        </div>
+                        <div class="pull-right">
                             @can('addDriveAsset')
                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#addAsset" class="btn btn-primary"><i class="far fa-plus"></i> Add Drive Asset</a>
-                                <p>&nbsp;</p>
                             @endcan
                         </div>
+                    </div>
+                    <div class="card-body">
 
                         <table class="table">
                             <thead>

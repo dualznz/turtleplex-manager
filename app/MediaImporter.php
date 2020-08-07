@@ -27,7 +27,7 @@ class MediaImporter extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'server_id', 'drive_id', 'drive_asset_id', 'media_title', 'tmdb_media_type'
+        'id', 'hash_id', 'server_id', 'drive_id', 'drive_asset_id', 'media_title', 'tmdb_media_type'
     ];
 
     /**
@@ -42,5 +42,10 @@ class MediaImporter extends Model
     public function asset()
     {
         return $this->hasOne('App\DriveAssets', 'id', 'drive_asset_id');
+    }
+
+    public function media()
+    {
+        return $this->hasOne('App\Media', 'media_title', 'media_title');
     }
 }

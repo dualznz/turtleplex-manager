@@ -58,6 +58,7 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'uploadDriveMediaImporter', 'category_id' => $media->id, 'description' => 'Upload drive media from external file']);
         Permission::create(['name' => 'searchImportedMedia', 'category_id' => $media->id, 'description' => 'Seach existing imported media']);
         Permission::create(['name' => 'removeImportedMedia', 'category_id' => $media->id, 'description' => 'Remove existing imported media']);
+        Permission::create(['name' => 'addImportedMediaResult', 'category_id' => $media->id, 'description' => 'Add media from imported file']);
 
         /*
          * Hardware Permissions

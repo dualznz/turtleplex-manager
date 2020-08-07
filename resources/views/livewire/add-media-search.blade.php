@@ -60,7 +60,7 @@
                                     @endcan
                                 @else
                                     <?php
-                                    $s = \App\Media::where('server_id', $server->id)->where('drive_id', $drive->id)->whereLike('media_title', $result['title'])->first();
+                                    $s = \App\Media::where('server_id', $server->id)->where('drive_id', $drive->id)->where('media_title', $result['title'])->first();
                                     ?>
                                     <a href="{{ route('media-view', [$s->server->slug, $s->drive->slug, $s->media_type, $s->slug, $s->release_year]) }}" class="btn btn-outline-secondary">Already Exists</a>
                                 @endif
@@ -89,7 +89,7 @@
                                     @endcan
                                 @else
                                     <?php
-                                    $s = \App\Media::where('server_id', $server->id)->where('drive_id', $drive->id)->whereLike('media_title', $result['title'])->first();
+                                    $s = \App\Media::where('server_id', $server->id)->where('drive_id', $drive->id)->where('media_title', $result['title'])->first();
                                     ?>
                                     <a href="{{ route('media-view', [$s->server->slug, $s->drive->slug, $s->media_type, $s->slug, $s->release_year]) }}" class="btn btn-outline-secondary">Already Exists</a>
                                 @endif

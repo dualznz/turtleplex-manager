@@ -25,15 +25,15 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Invites</h5>
-                        <h6 class="card-subtitle">Invite other members to be able to access the management portal</h6>
+                        <div class="pull-left">
+                            <h5 class="card-title text-black">Invites</h5>
+                            <h6 class="card-subtitle">Invite other members to be able to access the management portal</h6>
+                        </div>
+                        <div class="pull-right">
+                            <a href="{{ route('developer-invites-create') }}" class="btn btn-primary"><i class="far fa-envelope-open"></i> Create Invite</a>
+                        </div>
                     </div>
                     <div class="card-body">
-
-                        <div class="float-right">
-                            <a href="{{ route('developer-invites-create') }}" class="btn btn-primary"><i class="far fa-envelope-open"></i> Create Invite</a>
-                            <p>&nbsp;</p>
-                        </div>
 
                         <table class="table">
                             <thead>

@@ -25,16 +25,15 @@
                 <!-- Start Card -->
                 <div class="card m-b-30">
                     <div class="card-header bg-white">
-                        <h5 class="card-title text-black">Media Issues: {{ $asset->asset_name }}</h5>
-                        <h6 class="card-subtitle">Assess media submission issues and manually update them via <a href="https://www.postman.com/" target="_blank">Postman</a>.</h6>
+                        <div class="pull-left">
+                            <h5 class="card-title text-black">Media Issues: {{ $asset->asset_name }}</h5>
+                            <h6 class="card-subtitle">Assess media submission issues and manually update them via <a href="https://www.postman.com/" target="_blank">Postman</a>.</h6>
+                        </div>
+                        <div class="pull-right">
+                            <a href="{{ route('media-issue') }}" class="btn btn-primary"><i class="fas fa-chevron-double-left"></i> Back To Issues</a>
+                        </div>
                     </div>
                     <div class="card-body">
-
-                        <a href="{{ route('media-issue') }}" class="btn btn-primary"><i class="fas fa-chevron-double-left"></i> Back To Issues</a>
-
-                        <div class="col-md-12">
-                            <p>&nbsp;</p>
-                        </div>
 
                         <table class="table">
                             <thead>
