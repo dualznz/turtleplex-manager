@@ -72,7 +72,7 @@
                                                         <a href="{{ route('media-importer-search', [$server->slug, $drive->slug, $i->tmdb_media_type, $i->hash_id]) }}" class="btn btn-round btn-success"><i class="fal fa-search-plus"></i></a>
                                                     @endcan
                                                     @can ('removeImportedMedia')
-                                                        <a href="{{ route('media-importer-remove', [$server->slug, $drive->slug, $i->hash_id]) }}" class="btn btn-round btn-danger"><i class="fal fa-trash-alt"></i></a>
+                                                        &nbsp;&nbsp;&nbsp;<a href="{{ route('media-importer-remove', [$server->slug, $drive->slug, $i->hash_id]) }}" class="btn btn-round btn-danger"><i class="fal fa-trash-alt"></i></a>
                                                     @endcan
                                                 </div>
                                             </td>
