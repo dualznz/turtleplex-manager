@@ -75,10 +75,10 @@
                                 <div class="col-md-12" style="color: white;">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            @if ($poster_92_path != 'https://image.tmdb.org/t/p/w92')
-                                                <img src="{{ $poster_92_path }}" class="img-thumbnail">
+                                            @if ($poster_154_path != 'https://image.tmdb.org/t/p/w154')
+                                                <img src="{{ $poster_154_path }}" class="img-thumbnail">
                                             @else
-                                                <img src="/static/assets/images/noposter_92.jpg" class="img-thumbnail">
+                                                <img src="/static/assets/images/noposter_154.jpg" class="img-thumbnail">
                                             @endif
                                         </div>
                                         <div class="col-md-9">
