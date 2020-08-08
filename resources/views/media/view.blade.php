@@ -35,7 +35,11 @@
                             <div class="col-md-12" style="color: white;">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="{{ $media->poster_154_path }}" class="img-thumbnail">
+                                        @if ($media->poster_92_path != 'https://image.tmdb.org/t/p/w92')
+                                            <img src="{{ $media->poster_92_path }}" class="img-thumbnail">
+                                        @else
+                                            <img src="/static/assets/images/noposter_92.jpg" class="img-thumbnail">
+                                        @endif
                                     </div>
                                     <div class="col-md-9">
                                         <span style="font-size: 26px;">{{ $media->media_title }} ({{ $media->release_year }})</span><br>
