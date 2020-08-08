@@ -75,8 +75,8 @@
                                 <div class="col-md-12" style="color: white;">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            @if (!is_null($result['poster_path']))
-                                                <img src="https://image.tmdb.org/t/p/w92{{ $result['poster_path'] }}" class="img-thumbnail">
+                                            @if (!is_null($poster_92_path))
+                                                <img src="https://image.tmdb.org/t/p/w92{{ $poster_92_path }}" class="img-thumbnail">
                                             @else
                                                 <img src="/static/assets/images/noposter_92.jpg" class="img-shadow">
                                             @endif
