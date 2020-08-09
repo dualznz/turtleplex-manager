@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Http;
 
 class OmbiUsersController extends Controller
 {
+    public function index()
+    {
+        return view('developer.ombi.index', [
+            'users' => OmbiUsers::orderBy('username', 'ASC')->get()
+        ]);
+    }
+
     public function importer()
     {
         $stream = Http::withHeaders([

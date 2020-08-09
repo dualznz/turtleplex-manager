@@ -68,9 +68,10 @@
                         </a>
                         <ul class="xp-vertical-submenu">
                             <li><a href="/horizon" target="_blank"><i class="far fa-tasks"></i> <span>Horizon</span></a></li>
+                            <li><a href="/log-viewer" target="_blank"><i class="far fa-bug"></i> <span>Log Viewer</span></a></li>
                             <li {{ (request()->is('*developer/invites*') ? 'class=active' : '') }}><a href="{{ route('developer-invites') }}"><i class="far fa-envelope-open"></i> <span>Invites</span></a></li>
                             <li {{ (request()->is('*developer/users*') ? 'class=active' : '') }}><a href="{{ route('developer-users') }}"><i class="far fa-users"></i> <span>Users</span></a></li>
-                            <li {{ request()->is('*developer/ombi-users*') ? 'class=active' : '' }}><a><i class="far fa-user-friends"></i> <span>Ombi Users</span></a></li>
+                            <li {{ request()->is('*developer/ombi-users*') ? 'class=active' : '' }}><a href="{{ route('ombi-users') }}"><i class="far fa-user-friends"></i> <span>Ombi Users</span></a></li>
                             <li {{ (request()->is('*developer/permissions*') ? 'class=active' : '') }}><a href="{{ route('developer-permissions') }}"><i class="far fa-key"></i> <span>Permissions</span></a></li>
                         </ul>
                     </li>
