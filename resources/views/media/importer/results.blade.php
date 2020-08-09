@@ -107,7 +107,7 @@
                                                 {{ $result['overview'] }}
                                             </td>
                                             <td style="vertical-align: middle;" align="center">
-                                                @if (count(\App\Media::where('media_title', $result['media_title'])->get()) == 0)
+                                                @if (count(\App\Media::where('media_title', $result['name'])->get()) == 0)
                                                     @can ('addImportedMediaResult')
                                                         <a href="{{ route('media-importer-insert', [$server->slug, $drive->slug, $tmdb_media_type, $result['id'], $search->hash_id]) }}" class="btn btn-primary" id="addMedia"><i class="fas fa-plus"></i> Add</a>
                                                     @endcan
