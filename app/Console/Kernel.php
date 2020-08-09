@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\OmbiUsersImporter;
 use App\Jobs\PingHosts;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -28,6 +29,10 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             dispatch(new PingHosts());
         })->everyFiveMinutes();
+
+        $schedule->call(function () {
+           dispatch(new OmbiUsersImporter());
+        })->everyTwoHours();
     }
 
     /**

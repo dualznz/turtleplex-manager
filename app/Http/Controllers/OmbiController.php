@@ -12,4 +12,6 @@ class OmbiController extends Controller
             'ApiKey' => config('services.ombi.key')
         ])->get(config('services.ombi.domain').'Issues')->json();
     }
+
+
 }
