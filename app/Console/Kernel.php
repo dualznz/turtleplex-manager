@@ -28,10 +28,10 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             dispatch(new PingHosts());
-        })->everyFiveMinutes();
+        })->everyMinute();
 
         $schedule->call(function () {
-           dispatch(new OmbiUsersImporter());
+           //dispatch(new OmbiUsersImporter());
         })->everyTwoHours();
     }
 
