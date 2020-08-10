@@ -31,8 +31,8 @@ class Kernel extends ConsoleKernel
         })->everyMinute();
 
         $schedule->call(function () {
-           //dispatch(new OmbiUsersImporter());
-        })->everyTwoHours();
+           dispatch(new OmbiUsersImporter());
+        })->everySixHours();
     }
 
     /**
