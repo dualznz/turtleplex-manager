@@ -30,7 +30,7 @@
                             <h6 class="card-subtitle">View / edit or delete imported ombi users which is used to incoming requests, issues and so forth</h6>
                         </div>
                         <div class="pull-right">
-                            <a href="" class="btn btn-primary">Manual Import</a>
+                            <a href="{{ route('ombi-users-manual-import') }}" class="btn btn-primary">Manual Import</a>
                         </div>
                     </div>
                     <div class="card-body">

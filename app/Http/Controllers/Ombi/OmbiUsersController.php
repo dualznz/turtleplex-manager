@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ombi;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ManualOmbiUsersImport;
 use App\OmbiUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -18,26 +19,10 @@ class OmbiUsersController extends Controller
 
     public function importer()
     {
-        $stream = Http::withHeaders([
-            'ApiKey' => config('services.ombi.key')
-        ])->get(config('services.ombi.domain').'Identity/Users')->json();
+        ManualOmbiUsersImport::dispatch();
 
-        $count = 0;
-
-        foreach ($stream as $i) {
-            // check to see if the user is already in the database table
-            $users = OmbiUsers::where('user_id', $i['id'])->first();
-            if (is_null($users)) {
-                // user has not been found so we can add them
-                $s = new OmbiUsers();
-                $s->user_id = $i['id'];
-                $s->username = $i['userName'];
-                $s->alias = $i['alias'];
-                $s->email = $i['emailAddress'];
-                $s->save();
-
-                $count++;
-            }
-        }
+        return redirect()->back()
+            ->with('message', 'Manual ombi users import job has been dispatched, the information will update shortly!')
+            ->with('type', 'alert-success');
     }
 }
