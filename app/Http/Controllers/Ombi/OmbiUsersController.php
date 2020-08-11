@@ -58,6 +58,21 @@ class OmbiUsersController extends Controller
                 ->withInput();
         }
 
+        $stream = Http::withHeaders([
+            'ApiKey' => config('services.ombi.key')
+        ])->delete(config('services.ombi.api_domain').'Identity/'.$user->user_id)->json();
 
+        if ($stream['successful'] == true) {
+            // removed account successfully
+            $user->delete();
+
+            return redirect()->back()
+                ->with('message', 'Account ('.$user->username.') has been successfully removed from ombi & the management system!')
+                ->with('type', 'alert-success');
+        } else {
+            return redirect()->back()
+                ->with('message', 'Unable to remove account ('.$user->username.') from the management system & ombi!')
+                ->with('type', 'alert-warning');
+        }
     }
 }

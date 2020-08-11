@@ -29,6 +29,7 @@ Route::prefix('/invite')->group(function () {
 
 // Testing
 //Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getIssues']);
+//Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getUsers']);
 
 Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard
