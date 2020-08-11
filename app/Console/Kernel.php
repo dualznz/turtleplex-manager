@@ -26,13 +26,19 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            dispatch(new PingHosts());
-        })->everyMinute();
-
+        /*
+         * Dispatch jobs every 15 minutes
+         */
         $schedule->call(function () {
            dispatch(new OmbiUsersImporter());
-        })->everySixHours();
+        })->everyFifteenMinutes();
+
+        /*
+         * Dispatch jobs every minute
+         */
+        $schedule->call(function () {
+            dispatch(new PingHosts());
+        })->everyThirtyMinutes();
     }
 
     /**

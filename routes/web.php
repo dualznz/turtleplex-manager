@@ -28,7 +28,7 @@ Route::prefix('/invite')->group(function () {
 });
 
 // Testing
-Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getIssues']);
+//Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getIssues']);
 
 Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard
@@ -186,6 +186,7 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
         Route::prefix('/ombi-users')->group(function () {
             Route::get('/', ['as' => 'ombi-users', 'uses' => 'Ombi\OmbiUsersController@index']);
             Route::get('/manual-import', ['as' => 'ombi-users-manual-import', 'uses' => 'Ombi\OmbiUsersController@importer']);
+            Route::post('/remove', ['as' => 'ombi-users-remove', 'uses' => 'Ombi\OmbiUsersController@removeAccount']);
         });
 
         // Permission groups

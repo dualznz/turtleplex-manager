@@ -34,7 +34,7 @@ class ManualOmbiUsersImport implements ShouldQueue
     {
         $stream = Http::withHeaders([
             'ApiKey' => config('services.ombi.key')
-        ])->get(config('services.ombi.domain').'Identity/Users')->json();
+        ])->get(config('services.ombi.api_domain').'Identity/Users')->json();
 
         $count = 0;
 
