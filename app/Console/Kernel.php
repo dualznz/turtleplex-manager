@@ -38,7 +38,7 @@ class Kernel extends ConsoleKernel
          */
         $schedule->call(function () {
             dispatch(new PingHosts());
-        })->everyThirtyMinutes();
+        })->everyMinute();
     }
 
     /**

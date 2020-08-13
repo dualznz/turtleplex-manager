@@ -23,7 +23,7 @@ class RolesController extends Controller
     public function create()
     {
         return view('developer.permissions.roles.create', [
-            'categories' => PermissionCategories::all(),
+            'categories' => PermissionCategories::orderBy('order', 'ASC')->get(),
         ]);
     }
 
@@ -57,7 +57,7 @@ class RolesController extends Controller
 
         return view('developer.permissions.roles.edit', [
             'r'             => $r,
-            'categories'    => PermissionCategories::all(),
+            'categories'    => PermissionCategories::orderBy('order', 'ASC')->get(),
         ]);
     }
 

@@ -7,9 +7,9 @@
             <div class="col-2 col-md-1 col-lg-1 order-2 order-md-1 align-self-center">
                 <div class="xp-menubar">
                     <a class="xp-menu-hamburger" href="javascript:void(0);">
-                       <i class="mdi mdi-sort-variant font-24 text-white"></i>
-                     </a>
-                 </div>
+                        <i class="mdi mdi-sort-variant font-24 text-white"></i>
+                    </a>
+                </div>
             </div>
             <!-- End XP Col -->
             <!-- Start XP Col -->
@@ -41,8 +41,8 @@
         <!-- End XP Row -->
     </div>
     <!-- End XP Topbar -->
-    @yield('rightbar-content')
-    <!-- Start XP Footerbar -->
+@yield('rightbar-content')
+<!-- Start XP Footerbar -->
     <div class="xp-footerbar">
         <footer class="footer">
             <div class="float-right">

@@ -42,6 +42,17 @@
                     @endcan
                 @endif
 
+                @can ('viewOmbi')
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="fal fa-coffee"></i> <span>Ombi</span><i class="mdi mdi-chevron-right pull-right"></i>
+                        </a>
+                        <ul class="xp-vertical-submenu">
+
+                        </ul>
+                    </li>
+                @endcan
+
                 @can ('viewHardware')
                     <li>
                         <a href="javascript:void(0);">
