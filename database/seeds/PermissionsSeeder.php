@@ -68,7 +68,7 @@ class PermissionsSeeder extends Seeder
          * Permission::create(['name' => '', 'category_id' => $ombi->id, 'description' => '']);
          */
         Permission::create(['name' => 'viewOmbi', 'category_id' => $ombi->id, 'description' => 'Over-arching access to Ombi Area']);
-
+        Permission::create(['name' => 'viewOmbiRequests', 'category_id' => $ombi->id, 'description' => 'View ombi requests area']);
 
         /*
          * Hardware Permissions

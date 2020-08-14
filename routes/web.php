@@ -43,7 +43,7 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
         Route::post('/remove-account', ['as' => 'account-settings-remove', 'uses' => 'AccountController@removeAccount']);
     });
 
-    // Media Issyes
+    // Media Issues
     Route::prefix('/media-issues')->group(function () {
         Route::get('/', ['as' => 'media-issue', 'uses' => 'MediaIssuesController@index']);
         Route::get('/filter/{state_asset_id}', ['as' => 'media-issues-sorting', 'uses' => 'MediaIssuesController@filter']);
@@ -56,6 +56,16 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
             Route::post('/step-2', ['as' => 'media-issues-updater-step2-store', 'uses' => 'MediaIssuesController@storeStep2']);
             Route::get('/remove', ['as' => 'media-issues-remove', 'uses' => 'MediaIssuesController@remove']);
             Route::post('/remove', ['as' => 'media-issues-remove-store', 'uses' => 'MediaIssuesController@removeStore']);
+        });
+    });
+
+    // Ombi
+    Route::prefix('/ombi')->group(function () {
+        Route::prefix('/requests')->group(function () {
+            Route::get('/', ['as' => 'ombi-requests', 'as' => 'Ombi\OmbiRequestsController@index']);
+        });
+        Route::prefix('/issues')->group(function () {
+
         });
     });
 

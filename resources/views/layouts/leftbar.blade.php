@@ -48,7 +48,9 @@
                             <i class="fal fa-coffee"></i> <span>Ombi</span><i class="mdi mdi-chevron-right pull-right"></i>
                         </a>
                         <ul class="xp-vertical-submenu">
-
+                            @can ('viewOmbiRequests')
+                                <li {{ (request()->is('*servers') ? 'class=active' : '') }}><a href="{{ route('servers') }}"><i class="fal fa-server"></i> <span>Servers</span></a></li>
+                            @endcan
                         </ul>
                     </li>
                 @endcan

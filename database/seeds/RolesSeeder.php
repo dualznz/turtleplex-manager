@@ -40,6 +40,7 @@ class RolesSeeder extends Seeder
 
         // ombi area
         $staff->givePermissionTo('viewOmbi');
+        $staff->givePermissionTo('viewOmbiRequests');
 
         // hardware area
         $staff->givePermissionTo('viewHardware');
@@ -87,6 +88,7 @@ class RolesSeeder extends Seeder
 
         // ombi area
         $developer->givePermissionTo('viewOmbi');
+        $developer->givePermissionTo('viewOmbiRequests');
 
         // hardware area
         $developer->givePermissionTo('viewHardware');
