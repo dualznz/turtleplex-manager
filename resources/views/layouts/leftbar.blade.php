@@ -49,7 +49,7 @@
                         </a>
                         <ul class="xp-vertical-submenu">
                             @can ('viewOmbiRequests')
-                                <li {{ (request()->is('*servers') ? 'class=active' : '') }}><a href="{{ route('servers') }}"><i class="fal fa-server"></i> <span>Servers</span></a></li>
+                                <li {{ (request()->is('*ombi/requests') ? 'class=active' : '') }}><a href="{{ route('ombi-requests') }}"><i class="fal fa-signal-stream"></i> <span>Requests</span></a></li>
                             @endcan
                         </ul>
                     </li>
