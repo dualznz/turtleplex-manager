@@ -10,7 +10,7 @@ cache:
     - vendor
 before_script:
   - cp .env.travis .env
-  - sudo mysql -e 'create database manager;'
+  - sudo mysql -e 'create database testing;'
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
   - php artisan key:generate
