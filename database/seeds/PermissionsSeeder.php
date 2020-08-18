@@ -19,6 +19,7 @@ class PermissionsSeeder extends Seeder
         // Permission categories
         $staff = PermissionCategories::create(['order' => 1, 'Name' => 'Admin Area', 'description' => 'Over-arching access to Admin Area']);
         $media = PermissionCategories::create(['order' => 2, 'Name' => 'Media Area', 'description' => 'Over-arching access to Media Area']);
+        $ombi = PermissionCategories::create(['order' => 3, 'Name' => 'Ombi Area', 'description' => 'Over-arching access to Ombi Area']);
         $hardware = PermissionCategories::create(['order' => 16, 'Name' => 'Hardware Area', 'description' => 'Over-arching access to Hardware Area']);
         $developer = PermissionCategories::create(['order' => 20, 'name' => 'Developer Area', 'description' => 'Over-arching access to Developer Area']);
 
@@ -31,6 +32,7 @@ class PermissionsSeeder extends Seeder
 
         /*
          * Staff permissions
+         * Permission::create(['name' => '', 'category_id' => $staff->id, 'description' => '']);
          */
         Permission::create(['name' => 'viewAdmin', 'category_id' => $staff->id, 'description' => 'Over-arching access to Admin Area']);
         Permission::create(['name' => 'viewDashboard', 'category_id' => $staff->id, 'description' => 'View dashboard']);
@@ -43,6 +45,7 @@ class PermissionsSeeder extends Seeder
 
         /*
          * Media Permissions
+         * Permission::create(['name' => '', 'category_id' => $media->id, 'description' => '']);
          */
         Permission::create(['name' => 'viewMedia', 'category_id' => $media->id, 'description' => 'Over-arching access to Media Area']);
 
@@ -61,7 +64,15 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'addImportedMediaResult', 'category_id' => $media->id, 'description' => 'Add media from imported file']);
 
         /*
+         * Ombi Permissions
+         * Permission::create(['name' => '', 'category_id' => $ombi->id, 'description' => '']);
+         */
+        Permission::create(['name' => 'viewOmbi', 'category_id' => $ombi->id, 'description' => 'Over-arching access to Ombi Area']);
+        Permission::create(['name' => 'viewOmbiRequests', 'category_id' => $ombi->id, 'description' => 'View ombi requests area']);
+
+        /*
          * Hardware Permissions
+         * Permission::create(['name' => '', 'category_id' => $hardware->id, 'description' => '']);
          */
         Permission::create(['name' => 'viewHardware', 'category_id' => $hardware->id, 'description' => 'Over-arching access to Hardware Area']);
 
@@ -92,6 +103,7 @@ class PermissionsSeeder extends Seeder
 
         /**
          * Developer permissions
+         * Permission::create(['name' => '', 'category_id' => $developer->id, 'description' => '']);
          */
         Permission::create(['name' => 'viewDeveloper', 'category_id' => $developer->id, 'description' => 'Over-arching access to Developer Area']);
     }

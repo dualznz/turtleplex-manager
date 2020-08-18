@@ -38,6 +38,10 @@ class RolesSeeder extends Seeder
         $staff->givePermissionTo('removeDriveMedia');
         $staff->givePermissionTo('manualAddMedia');
 
+        // ombi area
+        $staff->givePermissionTo('viewOmbi');
+        $staff->givePermissionTo('viewOmbiRequests');
+
         // hardware area
         $staff->givePermissionTo('viewHardware');
         $staff->givePermissionTo('viewServers');
@@ -81,6 +85,10 @@ class RolesSeeder extends Seeder
         $developer->givePermissionTo('searchImportedMedia');
         $developer->givePermissionTo('removeImportedMedia');
         $developer->givePermissionTo('addImportedMediaResult');
+
+        // ombi area
+        $developer->givePermissionTo('viewOmbi');
+        $developer->givePermissionTo('viewOmbiRequests');
 
         // hardware area
         $developer->givePermissionTo('viewHardware');

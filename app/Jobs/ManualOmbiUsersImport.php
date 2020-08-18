@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-class OmbiUsersImporter implements ShouldQueue
+class ManualOmbiUsersImport implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -53,6 +53,7 @@ class OmbiUsersImporter implements ShouldQueue
                 $count++;
             }
         }
-        Log::info('[JOB][OmbiUsersImporter] Added (' . $count . ') ombi users');
+
+        Log::info('[JOB][ManualOmbiUsersImporter] Added (' . $count . ') ombi users');
     }
 }

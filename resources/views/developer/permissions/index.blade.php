@@ -77,7 +77,7 @@
                             <tbody>
                             @foreach ($categories as $c)
                                 <tr>
-                                    <td>{{ $c->id }}</td>
+                                    <td>{{ $c->order }}</td>
                                     <td>{{ $c->name }}</td>
                                     <td>{{ number_format($c->countPermissions(), 0) }}</td>
                                     <td>{{ \App\Helpers\Timezone::getDate($c->created_at->getTimestamp()) }}</td>

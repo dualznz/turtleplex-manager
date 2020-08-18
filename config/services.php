@@ -36,7 +36,8 @@ return [
     ],
 
     'ombi' => [
-      'domain' => env('OMBI_API_DOMAIN'),
-      'key' => env('OMBI_APIKEY'),
+        'domain' => env('OMBI_DOMAIN'),
+        'api_domain' => env('OMBI_API_DOMAIN'),
+        'key' => env('OMBI_APIKEY'),
     ],
 ];

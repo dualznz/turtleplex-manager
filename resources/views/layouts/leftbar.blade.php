@@ -42,6 +42,19 @@
                     @endcan
                 @endif
 
+                @can ('viewOmbi')
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="fal fa-coffee"></i> <span>Ombi</span><i class="mdi mdi-chevron-right pull-right"></i>
+                        </a>
+                        <ul class="xp-vertical-submenu">
+                            @can ('viewOmbiRequests')
+                                <li {{ (request()->is('*ombi/requests') ? 'class=active' : '') }}><a href="{{ route('ombi-requests') }}"><i class="fal fa-signal-stream"></i> <span>Requests</span></a></li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+
                 @can ('viewHardware')
                     <li>
                         <a href="javascript:void(0);">

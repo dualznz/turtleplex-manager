@@ -28,7 +28,9 @@ Route::prefix('/invite')->group(function () {
 });
 
 // Testing
-Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getIssues']);
+//Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getIssues']);
+//Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getUsers']);
+//Route::get('/ombi', ['as' => 'ombi', 'uses' => 'OmbiController@getMovies']);
 
 Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
     // Dashboard
@@ -42,7 +44,7 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
         Route::post('/remove-account', ['as' => 'account-settings-remove', 'uses' => 'AccountController@removeAccount']);
     });
 
-    // Media Issyes
+    // Media Issues
     Route::prefix('/media-issues')->group(function () {
         Route::get('/', ['as' => 'media-issue', 'uses' => 'MediaIssuesController@index']);
         Route::get('/filter/{state_asset_id}', ['as' => 'media-issues-sorting', 'uses' => 'MediaIssuesController@filter']);
@@ -58,12 +60,30 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
         });
     });
 
+    // Ombi
+    Route::prefix('/ombi')->group(function () {
+        Route::prefix('/requests')->group(function () {
+            Route::get('/', ['as' => 'ombi-requests', 'uses' => 'Ombi\OmbiRequestsController@index']);
+            Route::prefix('/movies')->group(function () {
+                Route::get('/', ['as' => 'ombi-requests-movies', 'uses' => 'Ombi\OmbiRequestsController@movies']);
+            });
+            Route::prefix('/tv')->group(function () {
+                Route::get('/', ['as' => 'ombi-requests-tv', 'uses' => 'Ombi\OmbiRequestsController@tv']);
+            });
+        });
+        Route::prefix('/issues')->group(function () {
+
+        });
+    });
+
     // Media
     Route::prefix('/media/{server_slug}/{drive_slug}')->group(function () {
         Route::get('/', ['as' => 'media', 'uses' => 'MediaController@index']);
         Route::get('/search', ['as' => 'media-search', 'uses' => 'MediaController@search']);
-        Route::get('/view/asset/{asset_id}', ['as' => 'media-asset', 'uses' => 'MediaController@viewAsset']);
-        Route::get('/view/asset/{asset_id}/filter/{state_asset_id}', ['as' => 'media-asset-filtered', 'uses' => 'MediaController@viewAssetFiltered']);
+        Route::prefix('/view/asset/{asset_id}')->group(function () {
+            Route::get('/', ['as' => 'media-asset', 'uses' => 'MediaController@viewAsset']);
+            Route::get('/filter/{state_asset_id}', ['as' => 'media-asset-filtered', 'uses' => 'MediaController@viewAssetFiltered']);
+        });
 
         // Add Media
         Route::prefix('/add')->group(function () {
@@ -186,6 +206,7 @@ Route::middleware(['auth', 'permission:viewAdmin'])->group(function () {
         Route::prefix('/ombi-users')->group(function () {
             Route::get('/', ['as' => 'ombi-users', 'uses' => 'Ombi\OmbiUsersController@index']);
             Route::get('/manual-import', ['as' => 'ombi-users-manual-import', 'uses' => 'Ombi\OmbiUsersController@importer']);
+            Route::post('/remove', ['as' => 'ombi-users-remove', 'uses' => 'Ombi\OmbiUsersController@removeAccount']);
         });
 
         // Permission groups

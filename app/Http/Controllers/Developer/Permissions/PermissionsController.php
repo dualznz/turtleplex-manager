@@ -67,7 +67,7 @@ class PermissionsController extends Controller
 
         return view('developer.permissions.permissions.edit', [
             'p'             => $p,
-            'categories'    => PermissionCategories::orderBy('order', 'ASC')->get(),
+            'categories'    => PermissionCategories::orderBy('order', 'DESC')->get(),
         ]);
     }
 
