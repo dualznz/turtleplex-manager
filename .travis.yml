@@ -10,7 +10,7 @@ cache:
     - vendor
 before_script:
   - cp .env.travis .env
-  - mysql -e 'CREATE DATABASE testing;'
+  - mysql -u root -e 'CREATE DATABASE testing;'
   - mysql -u root -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'homestead';"
   - mysql -u root -e "GRANT ALL ON testing.* TO 'homestead'@'localhost';"
   - composer self-update
