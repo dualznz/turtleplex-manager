@@ -9,7 +9,7 @@ cache:
     - node_modules
     - vendor
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS manager-test;'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS testing;'
 before_script:
   - cp .env.travis .env
   - sudo mysql -e 'create database testing;'
